@@ -1415,7 +1415,8 @@ a {
 }
 
 .overlay.dropdown {
-  top: 274px;
+  top: auto;
+  bottom: 178px;
   left: calc(50vw + 188px);
   width: 320px;
   height: 420px;
@@ -1657,7 +1658,6 @@ a {
 
 .dropdown-item.active {
   background: #ffffff;
-  border-color: #cad5e7;
   color: #0062ff;
   box-shadow: none;
 }
