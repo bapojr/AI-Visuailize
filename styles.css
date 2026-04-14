@@ -40,7 +40,7 @@ html,
 body {
   margin: 0;
   min-height: 100%;
-  background: #f7f9fd;
+  background: #f6f7fb;
   color: var(--ink-950);
   font-family: "Manrope", sans-serif;
 }
@@ -77,6 +77,10 @@ a {
   display: none;
 }
 
+.landing-flat-shell {
+  background: #f6f7fb;
+}
+
 .screen {
   display: none;
 }
@@ -97,7 +101,7 @@ a {
   position: sticky;
   top: 0;
   z-index: 10;
-  background: #f7f9fd;
+  background: #f6f7fb;
   border-bottom: 1px solid rgba(22, 37, 72, 0.07);
 }
 
@@ -270,66 +274,27 @@ a {
 
 .hero {
   position: relative;
-  overflow: visible;
+  overflow: hidden;
   color: var(--ink-950);
   padding: 48px 24px 24px;
-  background: #f7f9fd !important;
+  background: #f6f7fb !important;
   background-image: none !important;
-  isolation: isolate;
+  box-shadow: none !important;
+  filter: none !important;
 }
 
-.hero-orb {
-  position: absolute;
-  width: 420px;
-  height: 420px;
-  border-radius: 50%;
-  filter: blur(24px);
-  opacity: 0.14;
-  pointer-events: none;
-  display: none;
-}
-
+.hero-orb,
+.hero-orb-left,
+.hero-orb-right,
 .hero::before,
 .hero::after,
 .hero-inner::before,
 .hero-inner::after {
-  content: none !important;
   display: none !important;
+  content: none !important;
   background: none !important;
-}
-
-.hero::marker {
-  content: "";
-}
-
-.hero > * {
-  position: relative;
-  z-index: 1;
-}
-
-.hero::selection {
-  background: transparent;
-}
-
-.hero::before {
-  content: "";
-  display: block !important;
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background: #f7f9fd !important;
-}
-
-.hero-orb-left {
-  top: -180px;
-  left: -100px;
-  background: radial-gradient(circle, rgba(94, 124, 247, 0.8), rgba(94, 124, 247, 0));
-}
-
-.hero-orb-right {
-  right: -80px;
-  top: -140px;
-  background: radial-gradient(circle, rgba(104, 201, 178, 0.78), rgba(104, 201, 178, 0));
+  box-shadow: none !important;
+  filter: none !important;
 }
 
 .hero-inner {
@@ -490,6 +455,7 @@ a {
   max-width: 1180px;
   margin: 0 auto;
   padding: 32px 24px 0;
+  background: #f6f7fb;
 }
 
 .category-bar {
