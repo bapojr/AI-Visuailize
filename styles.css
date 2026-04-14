@@ -1163,10 +1163,58 @@ a {
   gap: 18px;
 }
 
+.ai-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 664px;
+  margin: 0 auto;
+}
+
+.paperpal-inline-mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.paperpal-inline-icon {
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  background: #0f63ff;
+  color: #ffffff;
+  display: grid;
+  place-items: center;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.paperpal-inline-mark strong {
+  color: #2257d9;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.paperpal-inline-mark span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 0 14px;
+  border-radius: 10px;
+  background: #2257d9;
+  color: #ffffff;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+}
+
 .variant-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: 1fr;
   gap: 14px;
+  justify-items: center;
 }
 
 .variant-card {
@@ -1185,6 +1233,38 @@ a {
   padding: 16px;
   display: grid;
   align-content: space-between;
+}
+
+.variant-card-image {
+  width: 100%;
+  max-width: 664px;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+
+.variant-image-real {
+  aspect-ratio: auto;
+  height: 420px;
+  padding: 0;
+  border-radius: 18px;
+  border: 1px solid rgba(228, 234, 247, 0.95);
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.variant-real-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+  background: #ffffff;
+}
+
+.preview-real-image {
+  border-radius: 24px;
 }
 
 .variant-topline,
@@ -1251,6 +1331,12 @@ a {
   padding: 0 16px;
   background: rgba(255, 255, 255, 0.86);
   outline: none;
+}
+
+.bubble-output {
+  max-width: 664px;
+  width: 100%;
+  background: #ffffff;
 }
 
 .editor-topbar {

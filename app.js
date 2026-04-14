@@ -193,6 +193,7 @@ const state = {
   zoom: 100,
   hasHistory: false,
   mixedOrder: shuffle([...templateCatalog]),
+  generatedResultTemplate: templateCatalog[0],
 };
 
 const desktopScreens = document.querySelectorAll(".desktop-shell .screen");
@@ -231,6 +232,10 @@ function isMobileViewport() {
 
 function variantById(id) {
   return variants.find((item) => item.id === id) || variants[0];
+}
+
+function randomTemplateItem() {
+  return templateCatalog[Math.floor(Math.random() * templateCatalog.length)];
 }
 
 function getGalleryItems(category) {
@@ -409,26 +414,15 @@ function renderLandingHistoryVisibility() {
 
 function createVariantCard(item) {
   const button = document.createElement("button");
-  const isActive = state.selectedVariant === item.id;
-  button.className = `variant-card accent-${item.accent} ${isActive ? "active" : ""}`;
+  button.className = `variant-card variant-card-image accent-${item.accent} active`;
   button.innerHTML = `
-    <div class="variant-image accent-${item.accent}">
-      <div class="variant-topline"></div>
-      <div class="variant-figure"></div>
-      <div class="variant-caption-lines">
-        <span></span>
-        <span></span>
-        <span class="short"></span>
-      </div>
-    </div>
-    <div class="variant-label">
-      <strong>${item.title}</strong>
-      <span>${item.summary}</span>
+    <div class="variant-image variant-image-real accent-${item.accent}">
+      <img src="${item.image}" alt="${item.title}" class="variant-real-image" />
     </div>
   `;
 
   button.addEventListener("click", () => {
-    state.selectedVariant = item.id;
+    state.generatedResultTemplate = item;
     updatePreviewVisuals();
     renderVariants();
     showOverlay(isMobileViewport() ? "mobile-preview" : "preview-panel");
@@ -440,15 +434,16 @@ function createVariantCard(item) {
 function renderVariants() {
   const desktop = document.getElementById("desktopVariants");
   const mobile = document.getElementById("mobileVariants");
+  const item = state.generatedResultTemplate;
 
   if (desktop) {
     desktop.innerHTML = "";
-    variants.forEach((item) => desktop.appendChild(createVariantCard(item)));
+    if (item) desktop.appendChild(createVariantCard(item));
   }
 
   if (mobile) {
     mobile.innerHTML = "";
-    variants.forEach((item) => mobile.appendChild(createVariantCard(item)));
+    if (item) mobile.appendChild(createVariantCard(item));
   }
 }
 
@@ -504,40 +499,23 @@ function renderSubjectList(filter = "") {
 }
 
 function updatePreviewVisuals() {
-  const activeVariant = variantById(state.selectedVariant);
+  const activeVariant = state.generatedResultTemplate || templateCatalog[0];
   const preview = document.getElementById("previewPanelImage");
   const mobilePreview = document.getElementById("mobilePreviewImage");
+  const conversationAiOutput = document.getElementById("conversationAiOutput");
+
+  if (conversationAiOutput) {
+    conversationAiOutput.textContent = `Here is a generated ${activeVariant.category.toLowerCase()} direction for ${activeVariant.subject.toLowerCase()}. You can continue refining the visual, ask for a different layout, or generate another direction.`;
+  }
 
   if (preview) {
     preview.className = `preview-image large accent-${activeVariant.accent}`;
-    preview.innerHTML = `
-      <div class="preview-topline"></div>
-      <div class="preview-frame">
-        <div class="preview-column">
-          <span></span>
-          <span></span>
-          <span class="short"></span>
-        </div>
-        <div class="preview-hero-circle"></div>
-      </div>
-      <div class="preview-foot">
-        <span></span>
-        <span class="short"></span>
-      </div>
-    `;
+    preview.innerHTML = `<img src="${activeVariant.image}" alt="${activeVariant.title}" class="variant-real-image preview-real-image" />`;
   }
 
   if (mobilePreview) {
     mobilePreview.className = `preview-image mobile-large accent-${activeVariant.accent}`;
-    mobilePreview.innerHTML = `
-      <div class="preview-frame mobile">
-        <div class="preview-column">
-          <span></span>
-          <span></span>
-        </div>
-        <div class="preview-hero-circle"></div>
-      </div>
-    `;
+    mobilePreview.innerHTML = `<img src="${activeVariant.image}" alt="${activeVariant.title}" class="variant-real-image preview-real-image" />`;
   }
 
   const previewTitle = document.getElementById("previewTitle");
@@ -548,11 +526,11 @@ function updatePreviewVisuals() {
   [document.getElementById("previewDots"), document.getElementById("mobilePreviewDots")].forEach((container) => {
     if (!container) return;
     container.innerHTML = "";
-    variants.forEach((item) => {
+    [activeVariant].forEach((item) => {
       const dot = document.createElement("button");
-      dot.className = `dot ${item.id === state.selectedVariant ? "active" : ""}`;
+      dot.className = "dot active";
       dot.addEventListener("click", () => {
-        state.selectedVariant = item.id;
+        state.generatedResultTemplate = item;
         updatePreviewVisuals();
         renderVariants();
       });
@@ -659,6 +637,7 @@ function bindSelectGroups() {
 
 function handlePromptSubmit(destination) {
   state.hasHistory = true;
+  state.generatedResultTemplate = randomTemplateItem();
   renderLandingHistoryVisibility();
   setScreen(destination);
   syncConversationPrompt();
