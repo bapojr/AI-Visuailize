@@ -1734,8 +1734,8 @@ a {
   background: radial-gradient(circle at 76% 22%, rgba(245, 168, 122, 0.24), transparent 22%);
 }
 
-.template-card[class*="accent-"] .template-thumb,
-.variant-card[class*="accent-"] .variant-image,
+.template-card[class*="accent-"],
+.variant-card[class*="accent-"],
 .preview-image[class*="accent-"],
 .thumb-preview[class*="accent-"],
 .history-mini[class*="accent-"] {
