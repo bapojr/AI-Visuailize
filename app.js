@@ -292,18 +292,11 @@ function showToast() {
 
 function createTemplateCard(template) {
   const card = document.createElement("button");
-  card.className = `template-card accent-${template.accent}`;
+  card.className = `template-card template-card-image accent-${template.accent}`;
   card.innerHTML = `
     <div class="template-thumb template-image-thumb">
-      <div class="template-badge-row">
-        <span class="badge subtle">${template.type}</span>
-        <span class="badge teal">${template.subject}</span>
-      </div>
+      <div class="template-corner-badge">Illustration AI</div>
       <img src="${template.image}" alt="${template.title}" class="template-real-image" />
-    </div>
-    <div class="template-content">
-      <strong>${template.title}</strong>
-      <p>${template.summary}</p>
     </div>
   `;
 
