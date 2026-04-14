@@ -146,18 +146,19 @@ a {
 .landing-intro h1 {
   margin: 0;
   max-width: 780px;
-  font-family: "Instrument Serif", serif;
+  font-family: "IBM Plex Serif", serif;
   font-size: 64px;
   line-height: 0.98;
   letter-spacing: -0.04em;
   font-weight: 400;
-  color: var(--ink-950);
+  color: var(--Blue-12, #051E57);
 }
 
 .landing-intro p {
   max-width: 1040px;
   margin: 0;
-  color: var(--ink-700);
+  font-family: "IBM Plex Sans", sans-serif;
+  color: var(--Gray-12, #13161B);
   text-align: center;
   font-size: 16px;
   line-height: 1.5;
