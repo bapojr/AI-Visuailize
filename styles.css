@@ -758,7 +758,7 @@ a {
 
 .section-head {
   display: flex;
-  align-items: end;
+  align-items: center;
   justify-content: space-between;
   gap: 18px;
   margin-bottom: 22px;
@@ -766,6 +766,7 @@ a {
 
 .section-head h2 {
   margin: 0;
+  font-family: "IBM Plex Sans", sans-serif;
   font-size: 42px;
   line-height: 1.02;
   letter-spacing: -0.04em;
