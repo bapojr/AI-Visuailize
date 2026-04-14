@@ -7,7 +7,10 @@ const templateCatalog = [
     category: "Infographics",
     type: "Template",
     accent: "blueprint",
-    summary: "A vertical explainer with arrows, labels, and an editorial scientific palette.",
+    subject: "Molecular Biology",
+    visualType: "infographic-grid",
+    labels: ["Target DNA", "Guide RNA", "Cas9", "Repair"],
+    summary: "A stepwise genome-editing explainer with labeled modules and directional flow.",
   },
   {
     id: "poster-diabetes",
@@ -15,7 +18,10 @@ const templateCatalog = [
     category: "Posters",
     type: "Pre-made",
     accent: "clinical",
-    summary: "A poster layout for disease progression, risk factors, and warning signs.",
+    subject: "Medical Science",
+    visualType: "poster-column",
+    labels: ["Overview", "Progression", "Risk factors", "Signs"],
+    summary: "A vertical medical poster with a strong title band, modular sections, and callouts.",
   },
   {
     id: "ga-neural",
@@ -23,7 +29,10 @@ const templateCatalog = [
     category: "Graphical Abstract",
     type: "Template",
     accent: "mint",
-    summary: "A compact publication-style figure showing a mechanism with clear callouts.",
+    subject: "Neuroscience",
+    visualType: "abstract-flow",
+    labels: ["Injury", "Signal", "Repair", "Outcome"],
+    summary: "A compact pathway figure for mechanism-first summaries and publication figures.",
   },
   {
     id: "infographic-plants",
@@ -31,7 +40,10 @@ const templateCatalog = [
     category: "Infographics",
     type: "Pre-made",
     accent: "botanical",
-    summary: "A multi-panel educational visual for xylem, phloem, and nutrient uptake.",
+    subject: "Plant Science",
+    visualType: "infographic-grid",
+    labels: ["Roots", "Xylem", "Leaves", "Transport"],
+    summary: "A multi-panel educational visual for uptake, transport, and mineral movement.",
   },
   {
     id: "poster-microbiome",
@@ -39,7 +51,10 @@ const templateCatalog = [
     category: "Posters",
     type: "Template",
     accent: "amber",
-    summary: "A conference-style poster with modular sections and data-aware spacing.",
+    subject: "Microbiology",
+    visualType: "poster-column",
+    labels: ["Context", "Species", "Signals", "Interventions"],
+    summary: "A conference-style poster balancing species clusters, findings, and interventions.",
   },
   {
     id: "ga-cancer",
@@ -47,7 +62,10 @@ const templateCatalog = [
     category: "Graphical Abstract",
     type: "Pre-made",
     accent: "rose",
-    summary: "A pathway-first graphical abstract for cell signaling and intervention points.",
+    subject: "Oncology",
+    visualType: "abstract-flow",
+    labels: ["Signal", "Amplify", "Block", "Response"],
+    summary: "A pathway-first graphical abstract for signaling cascades and intervention points.",
   },
   {
     id: "infographic-climate",
@@ -55,7 +73,10 @@ const templateCatalog = [
     category: "Infographics",
     type: "Template",
     accent: "sky",
-    summary: "An explanatory card stack with annotated environmental consequences.",
+    subject: "Environmental Science",
+    visualType: "infographic-grid",
+    labels: ["Drivers", "Impact", "Regions", "Action"],
+    summary: "An annotated explainer with environmental drivers, impacts, and response sections.",
   },
   {
     id: "poster-neuro",
@@ -63,7 +84,10 @@ const templateCatalog = [
     category: "Posters",
     type: "Pre-made",
     accent: "violet",
-    summary: "A structured poster balancing anatomy, progression, and biomarker sections.",
+    subject: "Pharmacology",
+    visualType: "poster-column",
+    labels: ["Mechanism", "Targets", "Biomarkers", "Therapy"],
+    summary: "A structured poster balancing anatomy, progression, and therapeutic insights.",
   },
   {
     id: "ga-rna",
@@ -71,7 +95,10 @@ const templateCatalog = [
     category: "Graphical Abstract",
     type: "Template",
     accent: "ocean",
-    summary: "A compact figure with process arrows and high-signal annotations.",
+    subject: "Biotechnology",
+    visualType: "abstract-flow",
+    labels: ["LNP", "Entry", "Release", "Translation"],
+    summary: "A compact process figure showing delivery, uptake, and translation outcomes.",
   },
   {
     id: "infographic-lens",
@@ -79,7 +106,10 @@ const templateCatalog = [
     category: "Infographics",
     type: "Pre-made",
     accent: "slate",
-    summary: "A concept-first infographic for STEM diagrams and educational explainers.",
+    subject: "Physics",
+    visualType: "infographic-grid",
+    labels: ["Light", "Lens", "Angle", "Result"],
+    summary: "A concept-first infographic for STEM diagrams, labels, and optical behavior.",
   },
   {
     id: "poster-ecology",
@@ -87,7 +117,10 @@ const templateCatalog = [
     category: "Posters",
     type: "Template",
     accent: "forest",
-    summary: "A modular poster composition for research highlights and figures.",
+    subject: "Ecology",
+    visualType: "poster-column",
+    labels: ["Habitat", "Species", "Network", "Change"],
+    summary: "A modular poster composition for ecosystem networks, evidence, and outcomes.",
   },
   {
     id: "ga-inflammation",
@@ -95,7 +128,10 @@ const templateCatalog = [
     category: "Graphical Abstract",
     type: "Pre-made",
     accent: "sunset",
-    summary: "A pathway story designed for high-density scientific communication.",
+    subject: "Immunology",
+    visualType: "abstract-flow",
+    labels: ["Trigger", "Cascade", "Cells", "Resolution"],
+    summary: "A publication-style pathway story for triggers, cascades, and resolution states.",
   },
 ];
 
@@ -300,16 +336,12 @@ function createTemplateCard(template) {
   const card = document.createElement("button");
   card.className = `template-card accent-${template.accent}`;
   card.innerHTML = `
-    <div class="template-thumb template-${template.type.toLowerCase().replace(" ", "-")}">
+    <div class="template-thumb template-${template.type.toLowerCase().replace(" ", "-")} template-${template.visualType}">
       <div class="template-badge-row">
         <span class="badge subtle">${template.type}</span>
-        <span class="badge teal">${template.category}</span>
+        <span class="badge teal">${template.subject}</span>
       </div>
-      <div class="template-illustration">
-        <span class="illustration-bar"></span>
-        <span class="illustration-bar short"></span>
-        <span class="illustration-panel"></span>
-      </div>
+      ${createTemplateVisual(template)}
     </div>
     <div class="template-content">
       <strong>${template.title}</strong>
@@ -326,6 +358,88 @@ function createTemplateCard(template) {
   });
 
   return card;
+}
+
+function createTemplateVisual(template) {
+  if (template.visualType === "poster-column") {
+    return `
+      <div class="template-visual poster-visual">
+        <div class="poster-canvas">
+          <div class="poster-header"></div>
+          <div class="poster-title-lines">
+            <span></span>
+            <span class="short"></span>
+          </div>
+          <div class="poster-columns">
+            <div class="poster-module">
+              <span></span>
+              <span></span>
+              <span class="short"></span>
+            </div>
+            <div class="poster-module emphasis">
+              <span></span>
+              <span class="short"></span>
+              <span></span>
+            </div>
+          </div>
+          <div class="poster-footer">
+            ${template.labels
+              .slice(0, 4)
+              .map((label) => `<span>${label}</span>`)
+              .join("")}
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  if (template.visualType === "abstract-flow") {
+    return `
+      <div class="template-visual abstract-visual">
+        <div class="abstract-ribbon"></div>
+        <div class="abstract-stages">
+          ${template.labels
+            .slice(0, 4)
+            .map(
+              (label) => `
+              <div class="abstract-stage">
+                <div class="abstract-node"></div>
+                <span>${label}</span>
+              </div>
+            `
+            )
+            .join("")}
+        </div>
+        <div class="abstract-links">
+          <span></span>
+          <span></span>
+          <span class="short"></span>
+        </div>
+      </div>
+    `;
+  }
+
+  return `
+    <div class="template-visual infographic-visual">
+      <div class="infographic-title-lines">
+        <span></span>
+        <span class="short"></span>
+      </div>
+      <div class="infographic-grid">
+        ${template.labels
+          .slice(0, 4)
+          .map(
+            (label) => `
+            <div class="infographic-panel">
+              <div class="infographic-figure"></div>
+              <span>${label}</span>
+            </div>
+          `
+          )
+          .join("")}
+      </div>
+    </div>
+  `;
 }
 
 function renderCategoryPills(targetId, scope) {

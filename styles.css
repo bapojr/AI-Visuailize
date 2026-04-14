@@ -850,6 +850,11 @@ a {
   gap: 14px;
 }
 
+.template-visual {
+  position: relative;
+  z-index: 1;
+}
+
 .illustration-bar,
 .preview-column span,
 .variant-caption-lines span {
@@ -873,6 +878,171 @@ a {
     linear-gradient(135deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0)),
     rgba(104, 201, 178, 0.16);
   border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+.infographic-visual {
+  display: grid;
+  gap: 14px;
+}
+
+.infographic-title-lines,
+.poster-title-lines,
+.abstract-links {
+  display: grid;
+  gap: 8px;
+}
+
+.infographic-title-lines span,
+.poster-title-lines span,
+.abstract-links span {
+  display: block;
+  height: 9px;
+  border-radius: 999px;
+  background: rgba(28, 45, 77, 0.14);
+}
+
+.infographic-title-lines span.short,
+.poster-title-lines span.short,
+.abstract-links span.short {
+  width: 56%;
+}
+
+.infographic-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.infographic-panel {
+  display: grid;
+  align-content: start;
+  gap: 10px;
+  min-height: 74px;
+  padding: 12px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.72);
+}
+
+.infographic-figure {
+  height: 28px;
+  border-radius: 12px;
+  background:
+    linear-gradient(135deg, rgba(102, 120, 255, 0.2), rgba(66, 207, 208, 0.16)),
+    rgba(255, 255, 255, 0.7);
+}
+
+.infographic-panel span,
+.abstract-stage span,
+.poster-footer span {
+  font-size: 11px;
+  line-height: 1.35;
+  font-weight: 600;
+  color: rgba(19, 22, 27, 0.72);
+}
+
+.poster-visual {
+  height: 100%;
+}
+
+.poster-canvas {
+  display: grid;
+  gap: 12px;
+  height: 100%;
+  padding: 14px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.84);
+  border: 1px solid rgba(255, 255, 255, 0.72);
+}
+
+.poster-header {
+  height: 34px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(102, 120, 255, 0.2), rgba(66, 207, 208, 0.14));
+}
+
+.poster-columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.poster-module {
+  min-height: 116px;
+  padding: 10px;
+  border-radius: 14px;
+  background: rgba(245, 248, 252, 0.9);
+  border: 1px solid rgba(228, 234, 247, 0.95);
+  display: grid;
+  align-content: start;
+  gap: 8px;
+}
+
+.poster-module span {
+  display: block;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(28, 45, 77, 0.12);
+}
+
+.poster-module span.short {
+  width: 68%;
+}
+
+.poster-module.emphasis {
+  background: linear-gradient(180deg, rgba(102, 120, 255, 0.08), rgba(255, 255, 255, 0.9));
+}
+
+.poster-footer {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px 10px;
+}
+
+.poster-footer span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 26px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: rgba(240, 244, 251, 0.92);
+}
+
+.abstract-visual {
+  display: grid;
+  gap: 14px;
+  align-content: start;
+}
+
+.abstract-ribbon {
+  height: 38px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(102, 120, 255, 0.16), rgba(66, 207, 208, 0.18));
+}
+
+.abstract-stages {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.abstract-stage {
+  min-height: 78px;
+  padding: 12px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.74);
+  display: grid;
+  gap: 10px;
+  align-content: start;
+}
+
+.abstract-node {
+  width: 34px;
+  height: 34px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(102, 120, 255, 0.26), rgba(66, 207, 208, 0.18));
 }
 
 .template-content {
