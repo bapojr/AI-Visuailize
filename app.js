@@ -3,135 +3,93 @@ const categories = ["Infographics", "Posters", "Graphical Abstract"];
 const templateCatalog = [
   {
     id: "infographic-crispr",
-    title: "CRISPR editing workflow",
+    title: "CRISPR-Cas9 Gene Editing Mechanism",
     category: "Infographics",
-    type: "Template",
+    type: "AI-generated",
     accent: "blueprint",
     subject: "Molecular Biology",
-    visualType: "infographic-grid",
-    labels: ["Target DNA", "Guide RNA", "Cas9", "Repair"],
-    summary: "A stepwise genome-editing explainer with labeled modules and directional flow.",
-  },
-  {
-    id: "poster-diabetes",
-    title: "Type 2 diabetes education poster",
-    category: "Posters",
-    type: "Pre-made",
-    accent: "clinical",
-    subject: "Medical Science",
-    visualType: "poster-column",
-    labels: ["Overview", "Progression", "Risk factors", "Signs"],
-    summary: "A vertical medical poster with a strong title band, modular sections, and callouts.",
-  },
-  {
-    id: "ga-neural",
-    title: "Neural repair graphical abstract",
-    category: "Graphical Abstract",
-    type: "Template",
-    accent: "mint",
-    subject: "Neuroscience",
-    visualType: "abstract-flow",
-    labels: ["Injury", "Signal", "Repair", "Outcome"],
-    summary: "A compact pathway figure for mechanism-first summaries and publication figures.",
+    image: "infographic-crispr.png",
+    summary: "A finished infographic showing target recognition, cutting, repair pathways, and edited outcomes.",
   },
   {
     id: "infographic-plants",
-    title: "Plant nutrient transport",
+    title: "Nutrient Transport in Plants",
     category: "Infographics",
-    type: "Pre-made",
+    type: "AI-generated",
     accent: "botanical",
     subject: "Plant Science",
-    visualType: "infographic-grid",
-    labels: ["Roots", "Xylem", "Leaves", "Transport"],
-    summary: "A multi-panel educational visual for uptake, transport, and mineral movement.",
-  },
-  {
-    id: "poster-microbiome",
-    title: "Gut microbiome poster",
-    category: "Posters",
-    type: "Template",
-    accent: "amber",
-    subject: "Microbiology",
-    visualType: "poster-column",
-    labels: ["Context", "Species", "Signals", "Interventions"],
-    summary: "A conference-style poster balancing species clusters, findings, and interventions.",
-  },
-  {
-    id: "ga-cancer",
-    title: "Tumor signaling abstract",
-    category: "Graphical Abstract",
-    type: "Pre-made",
-    accent: "rose",
-    subject: "Oncology",
-    visualType: "abstract-flow",
-    labels: ["Signal", "Amplify", "Block", "Response"],
-    summary: "A pathway-first graphical abstract for signaling cascades and intervention points.",
+    image: "infographic-plant-transport.png",
+    summary: "A detailed plant-transport infographic with xylem, phloem, transpiration, and mineral movement.",
   },
   {
     id: "infographic-climate",
-    title: "Climate impact explainer",
+    title: "Climate Change Impact Pathways",
     category: "Infographics",
-    type: "Template",
+    type: "AI-generated",
     accent: "sky",
     subject: "Environmental Science",
-    visualType: "infographic-grid",
-    labels: ["Drivers", "Impact", "Regions", "Action"],
-    summary: "An annotated explainer with environmental drivers, impacts, and response sections.",
+    image: "infographic-climate-pathways.png",
+    summary: "A polished climate-impact infographic linking greenhouse gases, temperature rise, ecosystems, and response.",
   },
   {
-    id: "poster-neuro",
-    title: "Neurodegeneration poster",
+    id: "poster-diabetes",
+    title: "How Type 2 Diabetes Develops in the Body",
     category: "Posters",
-    type: "Pre-made",
+    type: "AI-generated",
+    accent: "clinical",
+    subject: "Medical Science",
+    image: "poster-diabetes.png",
+    summary: "A research-style medical poster covering progression, insulin resistance, pancreas function, and warning signs.",
+  },
+  {
+    id: "poster-microbiome",
+    title: "The Human Gut Microbiome: Role in Health and Disease",
+    category: "Posters",
+    type: "AI-generated",
+    accent: "amber",
+    subject: "Microbiology",
+    image: "poster-gut-microbiome.png",
+    summary: "A complete scientific poster with microbiome diversity, immune interaction, dysbiosis, and interventions.",
+  },
+  {
+    id: "poster-alzheimers",
+    title: "Neurodegeneration in Alzheimer’s Disease",
+    category: "Posters",
+    type: "AI-generated",
     accent: "violet",
-    subject: "Pharmacology",
-    visualType: "poster-column",
-    labels: ["Mechanism", "Targets", "Biomarkers", "Therapy"],
-    summary: "A structured poster balancing anatomy, progression, and therapeutic insights.",
-  },
-  {
-    id: "ga-rna",
-    title: "mRNA delivery abstract",
-    category: "Graphical Abstract",
-    type: "Template",
-    accent: "ocean",
-    subject: "Biotechnology",
-    visualType: "abstract-flow",
-    labels: ["LNP", "Entry", "Release", "Translation"],
-    summary: "A compact process figure showing delivery, uptake, and translation outcomes.",
-  },
-  {
-    id: "infographic-lens",
-    title: "Optics concept visual",
-    category: "Infographics",
-    type: "Pre-made",
-    accent: "slate",
-    subject: "Physics",
-    visualType: "infographic-grid",
-    labels: ["Light", "Lens", "Angle", "Result"],
-    summary: "A concept-first infographic for STEM diagrams, labels, and optical behavior.",
-  },
-  {
-    id: "poster-ecology",
-    title: "Ecosystem interactions poster",
-    category: "Posters",
-    type: "Template",
-    accent: "forest",
-    subject: "Ecology",
-    visualType: "poster-column",
-    labels: ["Habitat", "Species", "Network", "Change"],
-    summary: "A modular poster composition for ecosystem networks, evidence, and outcomes.",
+    subject: "Neuroscience",
+    image: "poster-alzheimers.png",
+    summary: "A detailed poster covering plaques, tangles, neuron damage, disease stages, and therapeutic targets.",
   },
   {
     id: "ga-inflammation",
-    title: "Inflammation pathway abstract",
+    title: "Inflammation Response Pathway",
     category: "Graphical Abstract",
-    type: "Pre-made",
+    type: "AI-generated",
     accent: "sunset",
     subject: "Immunology",
-    visualType: "abstract-flow",
-    labels: ["Trigger", "Cascade", "Cells", "Resolution"],
-    summary: "A publication-style pathway story for triggers, cascades, and resolution states.",
+    image: "ga-inflammation.png",
+    summary: "A finished pathway figure showing trigger detection, cytokine signaling, immune activation, and resolution.",
+  },
+  {
+    id: "ga-rna",
+    title: "mRNA Delivery Using Lipid Nanoparticles",
+    category: "Graphical Abstract",
+    type: "AI-generated",
+    accent: "ocean",
+    subject: "Biotechnology",
+    image: "ga-mrna-delivery.png",
+    summary: "A polished delivery pathway figure showing nanoparticle uptake, endosomal escape, and release.",
+  },
+  {
+    id: "ga-bacterial-response",
+    title: "Bacterial Infection and Immune Response",
+    category: "Graphical Abstract",
+    type: "AI-generated",
+    accent: "mint",
+    subject: "Microbiology",
+    image: "ga-bacterial-immune-response.png",
+    summary: "A mechanistic graphical abstract tracing entry, immune recognition, inflammation, and intervention.",
   },
 ];
 
@@ -336,12 +294,12 @@ function createTemplateCard(template) {
   const card = document.createElement("button");
   card.className = `template-card accent-${template.accent}`;
   card.innerHTML = `
-    <div class="template-thumb template-${template.type.toLowerCase().replace(" ", "-")} template-${template.visualType}">
+    <div class="template-thumb template-image-thumb">
       <div class="template-badge-row">
         <span class="badge subtle">${template.type}</span>
         <span class="badge teal">${template.subject}</span>
       </div>
-      ${createTemplateVisual(template)}
+      <img src="${template.image}" alt="${template.title}" class="template-real-image" />
     </div>
     <div class="template-content">
       <strong>${template.title}</strong>
@@ -358,88 +316,6 @@ function createTemplateCard(template) {
   });
 
   return card;
-}
-
-function createTemplateVisual(template) {
-  if (template.visualType === "poster-column") {
-    return `
-      <div class="template-visual poster-visual">
-        <div class="poster-canvas">
-          <div class="poster-header"></div>
-          <div class="poster-title-lines">
-            <span></span>
-            <span class="short"></span>
-          </div>
-          <div class="poster-columns">
-            <div class="poster-module">
-              <span></span>
-              <span></span>
-              <span class="short"></span>
-            </div>
-            <div class="poster-module emphasis">
-              <span></span>
-              <span class="short"></span>
-              <span></span>
-            </div>
-          </div>
-          <div class="poster-footer">
-            ${template.labels
-              .slice(0, 4)
-              .map((label) => `<span>${label}</span>`)
-              .join("")}
-          </div>
-        </div>
-      </div>
-    `;
-  }
-
-  if (template.visualType === "abstract-flow") {
-    return `
-      <div class="template-visual abstract-visual">
-        <div class="abstract-ribbon"></div>
-        <div class="abstract-stages">
-          ${template.labels
-            .slice(0, 4)
-            .map(
-              (label) => `
-              <div class="abstract-stage">
-                <div class="abstract-node"></div>
-                <span>${label}</span>
-              </div>
-            `
-            )
-            .join("")}
-        </div>
-        <div class="abstract-links">
-          <span></span>
-          <span></span>
-          <span class="short"></span>
-        </div>
-      </div>
-    `;
-  }
-
-  return `
-    <div class="template-visual infographic-visual">
-      <div class="infographic-title-lines">
-        <span></span>
-        <span class="short"></span>
-      </div>
-      <div class="infographic-grid">
-        ${template.labels
-          .slice(0, 4)
-          .map(
-            (label) => `
-            <div class="infographic-panel">
-              <div class="infographic-figure"></div>
-              <span>${label}</span>
-            </div>
-          `
-          )
-          .join("")}
-      </div>
-    </div>
-  `;
 }
 
 function renderCategoryPills(targetId, scope) {
