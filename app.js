@@ -459,8 +459,9 @@ function renderSuggestions() {
     container.innerHTML = "";
     suggestionPills.forEach((text) => {
       const button = document.createElement("button");
-      button.className = "pill";
-      button.textContent = text;
+      const isDesktopConversation = id === "desktopSuggestions";
+      button.className = isDesktopConversation ? "conversation-question" : "pill";
+      button.textContent = isDesktopConversation ? text.replace(/^/, "") : text;
       button.addEventListener("click", () => {
         const target = id === "desktopSuggestions"
           ? document.getElementById("conversationPromptBar")
@@ -565,7 +566,6 @@ function syncConversationPrompt() {
   const value = document.getElementById("landingPromptDesktop")?.value.trim() || state.prompt;
   state.prompt = value;
   document.getElementById("conversationUserPrompt").textContent = value;
-  document.getElementById("conversationBreadcrumb").textContent = `${value.slice(0, 42)}...`;
 }
 
 function syncMobileConversationPrompt() {

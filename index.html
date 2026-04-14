@@ -134,53 +134,71 @@
         </section>
 
         <section class="screen" data-screen="conversation-desktop">
-          <header class="conversation-topbar">
-            <div class="brand-lockup compact">
-              <div class="wordmark">Paperpal</div>
-              <span class="muted">AI Visualizer</span>
-            </div>
-            <div class="breadcrumb" id="conversationBreadcrumb">
-              CRISPR mechanism infographic...
-            </div>
-            <button class="btn btn-ghost" data-go-screen="landing-desktop">
-              New Visualization
-            </button>
-          </header>
-
           <main class="conversation-layout">
-            <div class="conversation-backdrop"></div>
-            <div class="message message-user">
-              <div class="bubble" id="conversationUserPrompt"></div>
-              <div class="timestamp">Just now</div>
-            </div>
+            <div class="conversation-shell">
+              <div class="conversation-shell-top">
+                <h2>Chat</h2>
+                <div class="prime-counter"><span>5</span>/5 Prime questions left</div>
+              </div>
 
-            <div class="message message-ai">
-              <div class="ai-header">
-                <div class="avatar">P</div>
-                <div>
-                  I’m generating multiple visual directions for this request. Explore a
-                  design to preview it, or refine the prompt below.
+              <div class="message message-user">
+                <div class="bubble" id="conversationUserPrompt"></div>
+              </div>
+
+              <div class="message message-ai paperpal-answer">
+                <div class="paperpal-mark">
+                  <div class="paperpal-mark-icon">P</div>
+                  <div class="paperpal-mark-copy">
+                    <strong>Paperpal AI</strong>
+                    <span>PRIME</span>
+                  </div>
+                </div>
+                <div class="paperpal-answer-copy">
+                  The generated concepts explore this request through multiple visual directions,
+                  balancing scientific clarity, publication-friendly layout, and strong visual
+                  hierarchy. You can review different image results, ask for a refinement, or use
+                  one of the suggested follow-up questions below to iterate further.
+                </div>
+                <button class="sources-link">4 sources</button>
+                <div class="answer-divider"></div>
+                <div class="followup-label">Here are some questions you can ask:</div>
+                <div class="conversation-question-list" id="desktopSuggestions"></div>
+                <div class="conversation-actions-row">
+                  <button class="notes-button">
+                    <span>Add to Notes</span>
+                    <span>&#9662;</span>
+                  </button>
+                  <div class="reaction-actions">
+                    <button class="reaction-button" aria-label="Copy response">&#128203;</button>
+                    <button class="reaction-button" aria-label="Like response">&#128077;</button>
+                    <button class="reaction-button" aria-label="Dislike response">&#128078;</button>
+                  </div>
                 </div>
               </div>
-              <div class="variant-grid" id="desktopVariants"></div>
-              <div class="suggestions" id="desktopSuggestions"></div>
+
+              <div class="conversation-quick-ask">
+                <input
+                  id="conversationQuickQuestion"
+                  type="text"
+                  value="What is the main purpose or key message that you get from this"
+                />
+                <button class="more-questions">+ 5 more</button>
+              </div>
+
+              <div class="persistent-bar conversation-bottom-bar">
+                <div class="conversation-bottom-meta">
+                  <div class="prime-counter small"><span>5</span>/5 Prime questions left</div>
+                  <div class="sources-counter">4 Sources</div>
+                </div>
+                <input
+                  id="conversationPromptBar"
+                  type="text"
+                  placeholder="Ask any question..."
+                />
+                <button class="btn btn-icon small" id="conversationSubmit">&#8594;</button>
+              </div>
             </div>
           </main>
-
-          <div class="persistent-bar">
-            <input
-              id="conversationPromptBar"
-              type="text"
-              placeholder="Ask for refinements like: make the colors more natural, simplify the labels, or turn this into a poster."
-            />
-            <button class="subject-pill compact" data-open-overlay="subject-dropdown">
-              <span>&#128300;</span>
-              <span class="subject-pill-text">Subject Area</span>
-              <span>&#9662;</span>
-            </button>
-            <button class="icon-ghost small">&#128206;</button>
-            <button class="btn btn-icon small" id="conversationSubmit">&#8594;</button>
-          </div>
         </section>
 
         <section class="screen" data-screen="editor-desktop">
