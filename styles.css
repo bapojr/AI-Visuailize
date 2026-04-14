@@ -1423,8 +1423,10 @@ a {
   border-radius: 12px;
   padding: 8px;
   background: #ffffff;
-  border: 1px solid #cad5e7;
-  box-shadow: none;
+  border: 0;
+  box-shadow:
+    0 24px 48px rgba(19, 22, 27, 0.08),
+    0 8px 18px rgba(19, 22, 27, 0.05);
   overflow: hidden;
 }
 
