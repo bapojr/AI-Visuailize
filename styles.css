@@ -276,7 +276,7 @@ a {
   position: relative;
   overflow: hidden;
   color: var(--ink-950);
-  padding: 86px 24px 58px;
+  padding: 48px 24px 24px;
   background: transparent;
 }
 
@@ -288,6 +288,7 @@ a {
   filter: blur(24px);
   opacity: 0.14;
   pointer-events: none;
+  display: none;
 }
 
 .hero-orb-left {
@@ -307,13 +308,13 @@ a {
   margin: 0 auto;
   display: grid;
   justify-items: center;
-  gap: 28px;
+  gap: 20px;
   position: relative;
 }
 
 .hero-intro {
   display: grid;
-  gap: 14px;
+  gap: 10px;
   justify-items: center;
   text-align: center;
 }
@@ -333,21 +334,21 @@ a {
 
 .hero h1 {
   margin: 0;
-  max-width: 920px;
+  max-width: 780px;
   font-family: "Instrument Serif", serif;
-  font-size: 74px;
-  line-height: 0.96;
+  font-size: 64px;
+  line-height: 0.98;
   letter-spacing: -0.04em;
   font-weight: 400;
 }
 
 .hero p {
-  max-width: 700px;
+  max-width: 560px;
   margin: 0;
   color: var(--ink-500);
   text-align: center;
-  font-size: 18px;
-  line-height: 1.7;
+  font-size: 17px;
+  line-height: 1.6;
 }
 
 .chatbox {
@@ -432,7 +433,7 @@ a {
 .hero-meta {
   display: grid;
   justify-items: center;
-  gap: 14px;
+  gap: 10px;
 }
 
 .hero-caption {
@@ -464,7 +465,7 @@ a {
 }
 
 .category-bar {
-  padding-top: 34px;
+  padding-top: 18px;
 }
 
 .section-kicker {
@@ -1681,11 +1682,11 @@ a {
   }
 
   .hero {
-    padding-top: 54px;
+    padding-top: 34px;
   }
 
   .hero h1 {
-    font-size: 52px;
+    font-size: 46px;
   }
 
   .chatbox {
