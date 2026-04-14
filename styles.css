@@ -1353,8 +1353,7 @@ a {
 .overlay-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(12, 19, 34, 0.42);
-  backdrop-filter: blur(6px);
+  background: transparent;
   z-index: 50;
 }
 
@@ -1420,8 +1419,8 @@ a {
   left: calc(50vw + 146px);
   width: 360px;
   height: 420px;
-  border-radius: 16px;
-  padding: 10px;
+  border-radius: 12px;
+  padding: 8px;
   background: #ffffff;
   border: 1px solid #cad5e7;
   box-shadow: none;
