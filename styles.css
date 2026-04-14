@@ -1,30 +1,30 @@
 :root {
-  --ink-950: #0d1525;
-  --ink-900: #13203a;
-  --ink-800: #1d2d4d;
-  --ink-700: #32466d;
-  --ink-600: #4a5f87;
-  --ink-500: #66789b;
-  --ink-400: #90a0bc;
-  --ink-300: #bcc7da;
-  --ink-200: #d7deea;
-  --ink-100: #edf2f8;
-  --paper: #f7f8fc;
+  --ink-950: #16233f;
+  --ink-900: #21345c;
+  --ink-800: #314872;
+  --ink-700: #48608c;
+  --ink-600: #637ba7;
+  --ink-500: #7f92b5;
+  --ink-400: #a1b0cb;
+  --ink-300: #c7d2e4;
+  --ink-200: #dde6f2;
+  --ink-100: #eef4fb;
+  --paper: #f6f7fb;
   --white: #ffffff;
-  --teal-700: #196f87;
-  --teal-500: #2fa6bc;
-  --sky-500: #5e7cf7;
-  --mint-500: #68c9b2;
-  --rose-500: #ef8f9d;
-  --amber-500: #f2b66e;
-  --violet-500: #9985f2;
-  --forest-500: #5ea06f;
-  --border: rgba(32, 49, 84, 0.1);
-  --border-strong: rgba(32, 49, 84, 0.16);
-  --shadow-soft: 0 20px 60px rgba(22, 36, 72, 0.08);
-  --shadow-card: 0 12px 32px rgba(25, 37, 73, 0.08);
-  --shadow-panel: -10px 0 40px rgba(18, 30, 59, 0.12);
-  --shadow-chat: 0 32px 90px rgba(14, 24, 47, 0.22);
+  --teal-700: #15939a;
+  --teal-500: #57c8c7;
+  --sky-500: #6f85ff;
+  --mint-500: #75d7c8;
+  --rose-500: #f2a7c2;
+  --amber-500: #f0c27c;
+  --violet-500: #8f91ff;
+  --forest-500: #65b28d;
+  --border: rgba(72, 96, 140, 0.14);
+  --border-strong: rgba(72, 96, 140, 0.22);
+  --shadow-soft: 0 18px 48px rgba(43, 64, 108, 0.08);
+  --shadow-card: 0 10px 30px rgba(43, 64, 108, 0.08);
+  --shadow-panel: -10px 0 40px rgba(33, 52, 92, 0.12);
+  --shadow-chat: 0 24px 72px rgba(43, 64, 108, 0.14);
   --radius-xl: 30px;
   --radius-lg: 22px;
   --radius-md: 16px;
@@ -202,7 +202,7 @@ a {
 }
 
 .wordmark.inverse {
-  color: var(--white);
+  color: var(--ink-300);
 }
 
 .wordmark.plain,
@@ -237,14 +237,14 @@ a {
 }
 
 .badge.teal {
-  background: rgba(104, 201, 178, 0.14);
-  color: var(--teal-700);
+  background: rgba(87, 200, 199, 0.16);
+  color: #1b7f8d;
 }
 
 .badge.subtle {
-  background: rgba(255, 255, 255, 0.72);
+  background: rgba(255, 255, 255, 0.88);
   color: var(--ink-800);
-  border-color: rgba(255, 255, 255, 0.7);
+  border-color: rgba(143, 164, 204, 0.18);
 }
 
 .nav-links {
@@ -289,12 +289,12 @@ a {
 
 .btn-primary {
   color: var(--white);
-  background: linear-gradient(135deg, var(--sky-500), #7195ff 48%, #64c8ce 100%);
-  box-shadow: 0 14px 26px rgba(96, 124, 247, 0.26);
+  background: linear-gradient(135deg, #6f85ff 0%, #7695ff 48%, #62d1cc 100%);
+  box-shadow: 0 14px 26px rgba(111, 133, 255, 0.24);
 }
 
 .btn-primary:hover {
-  box-shadow: 0 18px 34px rgba(96, 124, 247, 0.3);
+  box-shadow: 0 18px 34px rgba(111, 133, 255, 0.28);
 }
 
 .btn-primary:disabled {
@@ -304,7 +304,7 @@ a {
 }
 
 .btn-secondary {
-  background: rgba(255, 255, 255, 0.78);
+  background: rgba(255, 255, 255, 0.88);
   color: var(--ink-900);
   border-color: var(--border);
 }
@@ -314,7 +314,7 @@ a {
 .tool,
 .pill,
 .toolbar-chip {
-  background: rgba(255, 255, 255, 0.74);
+  background: rgba(255, 255, 255, 0.9);
   color: var(--ink-900);
   border: 1px solid var(--border);
 }
@@ -387,7 +387,7 @@ a {
   padding: 8px 14px;
   border-radius: var(--radius-pill);
   border: 1px solid rgba(22, 37, 72, 0.08);
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.9);
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -417,9 +417,9 @@ a {
   width: min(860px, 100%);
   background: #ffffff;
   border-radius: 30px;
-  box-shadow: 0 16px 34px rgba(22, 36, 72, 0.06);
+  box-shadow: 0 18px 40px rgba(52, 73, 117, 0.08);
   padding: 18px 18px 0;
-  border: 1px solid rgba(22, 37, 72, 0.08);
+  border: 1px solid rgba(98, 123, 167, 0.14);
   overflow: hidden;
 }
 
@@ -504,9 +504,9 @@ a {
   width: 42px;
   height: 42px;
   border-radius: 14px;
-  border: 1px solid rgba(22, 37, 72, 0.1);
+  border: 1px solid rgba(98, 123, 167, 0.16);
   background: #ffffff;
-  color: var(--ink-500);
+  color: var(--ink-600);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -517,7 +517,7 @@ a {
   padding: 0 16px;
   border-radius: 18px;
   background: #ffffff;
-  border: 1px solid rgba(22, 37, 72, 0.1);
+  border: 1px solid rgba(98, 123, 167, 0.16);
   color: var(--ink-800);
   box-shadow: none;
 }
@@ -526,14 +526,14 @@ a {
   width: 52px;
   height: 52px;
   border-radius: 50%;
-  background: #f5f4f2;
-  color: var(--ink-500);
+  background: #eef3fb;
+  color: var(--ink-600);
   box-shadow: none;
   border: 0;
 }
 
 .landing-submit:hover {
-  background: #ece9e4;
+  background: #e4ecf9;
   box-shadow: none;
 }
 
@@ -548,7 +548,7 @@ a {
   align-items: center;
   gap: 8px;
   height: 42px;
-  background: rgba(255, 255, 255, 0.84);
+  background: rgba(255, 255, 255, 0.92);
   border: 1px solid var(--border);
   padding: 0 14px;
   color: var(--ink-700);
@@ -617,7 +617,7 @@ a {
   text-transform: uppercase;
   color: var(--ink-700);
   padding: 8px 12px;
-  background: rgba(255, 255, 255, 0.66);
+  background: rgba(255, 255, 255, 0.9);
   border: 1px solid var(--border);
   margin-bottom: 14px;
 }
@@ -642,9 +642,9 @@ a {
 .pill.active,
 .tool.active {
   color: var(--white);
-  background: linear-gradient(135deg, var(--ink-900), #2b4574);
+  background: linear-gradient(135deg, #6f85ff 0%, #62d1cc 100%);
   border-color: transparent;
-  box-shadow: 0 14px 24px rgba(18, 30, 59, 0.16);
+  box-shadow: 0 12px 24px rgba(111, 133, 255, 0.18);
 }
 
 .history-strip {
@@ -1268,8 +1268,8 @@ a {
 }
 
 .history-entry.active {
-  border-color: rgba(96, 124, 247, 0.26);
-  box-shadow: 0 14px 30px rgba(96, 124, 247, 0.08);
+  border-color: rgba(111, 133, 255, 0.26);
+  box-shadow: 0 14px 30px rgba(111, 133, 255, 0.08);
 }
 
 .selection-box {
@@ -1717,15 +1717,15 @@ a {
 }
 
 .accent-blueprint::after {
-  background: radial-gradient(circle at 78% 20%, rgba(94, 124, 247, 0.22), transparent 22%);
+  background: radial-gradient(circle at 78% 20%, rgba(111, 133, 255, 0.2), transparent 22%);
 }
 
 .accent-clinical::after {
-  background: radial-gradient(circle at 76% 24%, rgba(47, 166, 188, 0.2), transparent 20%);
+  background: radial-gradient(circle at 76% 24%, rgba(87, 200, 199, 0.2), transparent 20%);
 }
 
 .accent-mint::after {
-  background: radial-gradient(circle at 78% 22%, rgba(104, 201, 178, 0.22), transparent 22%);
+  background: radial-gradient(circle at 78% 22%, rgba(117, 215, 200, 0.22), transparent 22%);
 }
 
 .accent-botanical::after {
@@ -1745,7 +1745,7 @@ a {
 }
 
 .accent-violet::after {
-  background: radial-gradient(circle at 76% 22%, rgba(153, 133, 242, 0.22), transparent 20%);
+  background: radial-gradient(circle at 76% 22%, rgba(143, 145, 255, 0.2), transparent 20%);
 }
 
 .accent-ocean::after {
