@@ -467,6 +467,12 @@ a {
   padding: 0 6px;
 }
 
+.chatbox-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .landing-chat {
   max-width: 986px;
 }
