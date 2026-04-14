@@ -480,6 +480,7 @@ a {
   align-items: center;
   gap: 24px;
   flex: 1;
+  justify-content: flex-start;
 }
 
 .chatbox-upload-copy {
@@ -488,6 +489,7 @@ a {
   line-height: 1.5;
   text-align: left;
   padding: 0;
+  white-space: nowrap;
 }
 
 .landing-chat {
