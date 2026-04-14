@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Paperpal AI Visualizer Prototype</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="app">
+      <div class="desktop-shell">
+        <section class="screen active" data-screen="landing-desktop">
+          <header class="top-nav">
+            <div class="brand-lockup">
+              <div class="wordmark inverse">Paperpal</div>
+              <span class="badge teal">AI Visualizer</span>
+            </div>
+            <nav class="nav-links">
+              <a href="#features">Features</a>
+              <a href="#pricing">Pricing</a>
+            </nav>
+            <div class="nav-actions">
+              <button class="link-button">Login</button>
+              <button class="btn btn-primary" data-scroll-chat>Get Started</button>
+            </div>
+          </header>
+
+          <main>
+            <section class="hero">
+              <div class="hero-orb hero-orb-left"></div>
+              <div class="hero-orb hero-orb-right"></div>
+              <div class="hero-inner">
+                <div class="hero-intro">
+                  <span class="eyebrow">AI Visualization for research communication</span>
+                  <h1>Visualize research with AI.</h1>
+                  <p>
+                    Create infographics, posters, and graphical abstracts from a simple prompt.
+                  </p>
+                </div>
+                <div class="chatbox landing-chat">
+                  <div class="chatbox-topline">
+                    <div class="chatbox-kicker">Describe what you want to visualize</div>
+                    <div class="chatbox-status">Paper-aware visual drafts</div>
+                  </div>
+                  <textarea
+                    id="landingPromptDesktop"
+                    placeholder="Create a scientific infographic explaining the mechanism of CRISPR-Cas9 with labeled steps, clean callouts, and a clinical blue accent palette."
+                  ></textarea>
+                  <div class="chatbox-divider"></div>
+                  <div class="chatbox-footer">
+                    <div class="chatbox-left">
+                      <button class="icon-ghost" aria-label="Upload reference">
+                        <span class="icon-stack">&#128206;</span>
+                        <span>Reference</span>
+                      </button>
+                      <button class="subject-pill" data-open-overlay="subject-dropdown">
+                        <span>&#128300;</span>
+                        <span class="subject-pill-text">Default</span>
+                        <span>&#9662;</span>
+                      </button>
+                    </div>
+                    <button
+                      class="btn btn-icon"
+                      id="landingSubmitDesktop"
+                      data-go-screen="conversation-desktop"
+                      disabled
+                    >
+                      &#8594;
+                    </button>
+                  </div>
+                </div>
+                <div class="hero-meta">
+                  <div class="hero-caption">
+                    Upload up to 5 files (JPG, PNG) | Max limit per file: 10MB
+                  </div>
+                  <div class="hero-highlights">
+                    <span>Infographics</span>
+                    <span>Posters</span>
+                    <span>Graphical Abstracts</span>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="category-bar">
+              <div class="section-kicker">Choose your format</div>
+              <div class="category-pills" id="desktopCategoryPills"></div>
+            </section>
+
+            <section class="history-strip hidden" id="historyStripDesktop">
+              <div class="section-kicker">Recent Visualizations</div>
+              <div class="history-row" id="historyDesktop"></div>
+            </section>
+
+            <section class="gallery-section">
+              <div class="section-head">
+                <div>
+                  <h2>See what you can do with AI</h2>
+                  <p class="section-copy">
+                    Start from research-friendly templates and pre-made designs across
+                    multiple visual formats.
+                  </p>
+                </div>
+                <button class="btn btn-secondary" id="desktopLoadMore">Load more</button>
+              </div>
+              <div class="gallery-grid" id="desktopGallery"></div>
+            </section>
+          </main>
+
+          <footer class="footer">
+            <div>Paperpal</div>
+            <div>Copyright 2026</div>
+            <div>Privacy</div>
+            <div>Terms</div>
+            <div>Contact</div>
+          </footer>
+        </section>
+
+        <section class="screen" data-screen="conversation-desktop">
+          <header class="conversation-topbar">
+            <div class="brand-lockup compact">
+              <div class="wordmark">Paperpal</div>
+              <span class="muted">AI Visualizer</span>
+            </div>
+            <div class="breadcrumb" id="conversationBreadcrumb">
+              CRISPR mechanism infographic...
+            </div>
+            <button class="btn btn-ghost" data-go-screen="landing-desktop">
+              New Visualization
+            </button>
+          </header>
+
+          <main class="conversation-layout">
+            <div class="conversation-backdrop"></div>
+            <div class="message message-user">
+              <div class="bubble" id="conversationUserPrompt"></div>
+              <div class="timestamp">Just now</div>
+            </div>
+
+            <div class="message message-ai">
+              <div class="ai-header">
+                <div class="avatar">P</div>
+                <div>
+                  I’m generating multiple visual directions for this request. Explore a
+                  design to preview it, or refine the prompt below.
+                </div>
+              </div>
+              <div class="variant-grid" id="desktopVariants"></div>
+              <div class="suggestions" id="desktopSuggestions"></div>
+            </div>
+          </main>
+
+          <div class="persistent-bar">
+            <input
+              id="conversationPromptBar"
+              type="text"
+              placeholder="Ask for refinements like: make the colors more natural, simplify the labels, or turn this into a poster."
+            />
+            <button class="subject-pill compact" data-open-overlay="subject-dropdown">
+              <span>&#128300;</span>
+              <span class="subject-pill-text">Subject Area</span>
+              <span>&#9662;</span>
+            </button>
+            <button class="icon-ghost small">&#128206;</button>
+            <button class="btn btn-icon small" id="conversationSubmit">&#8594;</button>
+          </div>
+        </section>
+
+        <section class="screen" data-screen="editor-desktop">
+          <header class="editor-topbar">
+            <div class="editor-left">
+              <button class="wordmark plain" data-go-screen="landing-desktop">Paperpal</button>
+              <span class="muted">AI Visualizer</span>
+              <span class="divider"></span>
+              <button class="icon-ghost small" id="undoBtn">&#8630;</button>
+              <button class="icon-ghost small" id="redoBtn">&#8631;</button>
+            </div>
+            <div class="zoom-pill">
+              <button class="plain-button" id="zoomOutBtn">-</button>
+              <span id="zoomValue">100%</span>
+              <button class="plain-button" id="zoomInBtn">+</button>
+            </div>
+            <div class="editor-actions">
+              <button class="btn btn-ghost" data-open-overlay="share-modal">Share</button>
+              <button class="btn btn-primary" data-open-overlay="export-modal">
+                Export / Download
+              </button>
+            </div>
+          </header>
+
+          <div class="editor-toolbar" id="editorContextToolbar">
+            <div class="toolbar-group">Context toolbar inactive</div>
+          </div>
+
+          <main class="editor-main">
+            <section class="canvas-shell">
+              <div class="canvas-stage">
+                <div class="canvas-grid"></div>
+                <div class="canvas-card" id="editorCanvas">
+                  <div class="canvas-topband"></div>
+                  <div class="canvas-title" data-select="text">CRISPR Gene Editing Mechanism</div>
+                  <div class="canvas-subtitle" data-select="text">
+                    A simplified workflow showing target recognition, cleavage, and repair outcomes.
+                  </div>
+                  <div class="canvas-flow">
+                    <div class="flow-card selected-text tone-blue" data-select="text">
+                      Guide RNA identifies the matching DNA sequence
+                    </div>
+                    <div class="flow-arrow">&#8594;</div>
+                    <div class="flow-card tone-mint" data-select="shape">
+                      Cas9 binds and introduces a precise double-strand break
+                    </div>
+                    <div class="flow-arrow">&#8595;</div>
+                    <div class="flow-card tone-coral" data-select="shape">
+                      Cellular repair inserts, deletes, or replaces target sequence
+                    </div>
+                  </div>
+                  <div class="insight-row">
+                    <div class="insight-card" data-select="shape">
+                      <span class="insight-index">01</span>
+                      <strong>Recognition</strong>
+                      <p>Target site is identified through guide RNA complementarity.</p>
+                    </div>
+                    <div class="insight-card" data-select="shape">
+                      <span class="insight-index">02</span>
+                      <strong>Cleavage</strong>
+                      <p>Cas9 induces a break in the DNA backbone at the programmed site.</p>
+                    </div>
+                    <div class="insight-card" data-select="shape">
+                      <span class="insight-index">03</span>
+                      <strong>Repair</strong>
+                      <p>Repair pathways produce knockout or insertion outcomes.</p>
+                    </div>
+                  </div>
+                  <div class="annotation" data-select="text">
+                    Visual notes: keep labels high contrast, use directional arrows, and keep the
+                    overall layout publication-friendly.
+                  </div>
+                </div>
+                <div class="canvas-controls">
+                  <span id="canvasZoomPill">100%</span>
+                  <button class="icon-ghost small">#</button>
+                </div>
+              </div>
+
+              <footer class="bottom-toolbar">
+                <button class="tool active" data-open-overlay="chat-panel">Edit via chat</button>
+                <button class="tool" data-open-overlay="segment-overlay">Segment object</button>
+                <button class="tool" data-go-screen="editor-select-area">Select area</button>
+                <button class="tool" data-open-overlay="remove-bg">Remove background</button>
+                <button class="tool" data-open-overlay="overflow-menu">More &#9662;</button>
+                <button class="icon-ghost small">&#128465;</button>
+              </footer>
+            </section>
+
+            <aside class="history-panel expanded" id="historyPanel">
+              <div class="history-header">
+                <span class="section-kicker">History</span>
+                <button class="link-button" data-open-overlay="history-modal">View All</button>
+                <button class="plain-button" data-go-screen="editor-collapsed-history">&#8249;</button>
+              </div>
+              <div class="history-list" id="editorHistoryList"></div>
+            </aside>
+          </main>
+        </section>
+
+        <section class="screen" data-screen="editor-select-area">
+          <header class="editor-topbar">
+            <div class="editor-left">
+              <button class="wordmark plain" data-go-screen="landing-desktop">Paperpal</button>
+              <span class="muted">AI Visualizer</span>
+              <span class="divider"></span>
+              <button class="icon-ghost small">&#8630;</button>
+              <button class="icon-ghost small">&#8631;</button>
+            </div>
+            <div class="zoom-pill">
+              <button class="plain-button">-</button>
+              <span>100%</span>
+              <button class="plain-button">+</button>
+            </div>
+            <div class="editor-actions">
+              <button class="btn btn-ghost" data-open-overlay="share-modal">Share</button>
+              <button class="btn btn-primary" data-open-overlay="export-modal">
+                Export / Download
+              </button>
+            </div>
+          </header>
+
+          <div class="editor-toolbar">
+            <div class="toolbar-group">Select area mode active</div>
+          </div>
+
+          <main class="editor-main">
+            <section class="canvas-shell">
+              <div class="canvas-stage select-mode">
+                <div class="canvas-card">
+                  <div class="canvas-title">CRISPR Gene Editing Mechanism</div>
+                  <div class="canvas-flow dimmed">
+                    <div class="flow-card">Guide RNA identifies target DNA sequence</div>
+                    <div class="flow-arrow">&#8594;</div>
+                    <div class="flow-card">Cas9 creates a double-strand break</div>
+                    <div class="flow-arrow">&#8595;</div>
+                    <div class="flow-card">Repair inserts or removes targeted sequence</div>
+                  </div>
+                  <div class="selection-box">
+                    <div class="selection-bar">
+                      <span>Select area</span>
+                      <button class="link-button" data-open-overlay="chat-panel">Edit via chat</button>
+                      <button class="link-button" data-go-screen="editor-desktop">Isolate</button>
+                      <button class="link-button" data-go-screen="editor-desktop">Erase</button>
+                      <button class="plain-button" data-go-screen="editor-desktop">&times;</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <footer class="bottom-toolbar">
+                <button class="tool" data-open-overlay="chat-panel">Edit via chat</button>
+                <button class="tool" data-open-overlay="segment-overlay">Segment object</button>
+                <button class="tool active" data-go-screen="editor-desktop">Select area</button>
+                <button class="tool" data-open-overlay="remove-bg">Remove background</button>
+                <button class="tool" data-open-overlay="overflow-menu">More &#9662;</button>
+                <button class="icon-ghost small">&#128465;</button>
+              </footer>
+            </section>
+
+            <aside class="history-panel expanded">
+              <div class="history-header">
+                <span class="section-kicker">History</span>
+                <button class="link-button" data-open-overlay="history-modal">View All</button>
+                <button class="plain-button" data-go-screen="editor-collapsed-history">&#8249;</button>
+              </div>
+              <div class="history-list" id="editorHistoryListSelect"></div>
+            </aside>
+          </main>
+        </section>
+
+        <section class="screen" data-screen="editor-collapsed-history">
+          <header class="editor-topbar">
+            <div class="editor-left">
+              <button class="wordmark plain" data-go-screen="landing-desktop">Paperpal</button>
+              <span class="muted">AI Visualizer</span>
+              <span class="divider"></span>
+              <button class="icon-ghost small">&#8630;</button>
+              <button class="icon-ghost small">&#8631;</button>
+            </div>
+            <div class="zoom-pill">
+              <button class="plain-button">-</button>
+              <span>100%</span>
+              <button class="plain-button">+</button>
+            </div>
+            <div class="editor-actions">
+              <button class="btn btn-ghost" data-open-overlay="share-modal">Share</button>
+              <button class="btn btn-primary" data-open-overlay="export-modal">
+                Export / Download
+              </button>
+            </div>
+          </header>
+
+          <main class="editor-main collapsed-mode">
+            <section class="canvas-shell">
+              <div class="canvas-stage">
+                <div class="canvas-card">
+                  <div class="canvas-title">CRISPR Gene Editing Mechanism</div>
+                  <div class="canvas-flow">
+                    <div class="flow-card selected-text">Guide RNA identifies target DNA sequence</div>
+                    <div class="flow-arrow">&#8594;</div>
+                    <div class="flow-card">Cas9 creates a double-strand break</div>
+                    <div class="flow-arrow">&#8595;</div>
+                    <div class="flow-card">Repair inserts or removes targeted sequence</div>
+                  </div>
+                </div>
+              </div>
+
+              <footer class="bottom-toolbar">
+                <button class="tool" data-open-overlay="chat-panel">Edit via chat</button>
+                <button class="tool" data-open-overlay="segment-overlay">Segment object</button>
+                <button class="tool" data-go-screen="editor-select-area">Select area</button>
+                <button class="tool" data-open-overlay="remove-bg">Remove background</button>
+                <button class="tool" data-open-overlay="overflow-menu">More &#9662;</button>
+                <button class="icon-ghost small">&#128465;</button>
+              </footer>
+            </section>
+
+            <aside class="history-panel collapsed">
+              <button class="icon-ghost small" data-go-screen="editor-desktop">&#128339;</button>
+              <button class="plain-button" data-go-screen="editor-desktop">&#8250;</button>
+            </aside>
+          </main>
+        </section>
+      </div>
+
+      <div class="mobile-shell">
+        <section class="screen active" data-screen="landing-mobile">
+          <header class="top-nav mobile">
+            <div class="wordmark">Paperpal</div>
+            <button class="icon-ghost" data-open-overlay="mobile-drawer">&#9776;</button>
+          </header>
+          <main>
+            <section class="hero mobile-hero">
+              <div class="hero-inner mobile-width">
+                <h1>Visualize your research, instantly</h1>
+                <p>Build scientific visuals from a simple brief on mobile.</p>
+                <div class="chatbox mobile-chat">
+                  <textarea
+                    id="landingPromptMobile"
+                    placeholder="Describe what you want to visualise"
+                  ></textarea>
+                  <div class="chatbox-divider"></div>
+                  <button class="subject-pill wide" data-open-overlay="subject-dropdown">
+                    <span>&#128300;</span>
+                    <span class="subject-pill-text">Default (No specific subject)</span>
+                    <span>&#9662;</span>
+                  </button>
+                  <div class="mobile-chat-actions">
+                    <button class="icon-ghost">&#128206;</button>
+                    <button
+                      class="btn btn-icon"
+                      id="landingSubmitMobile"
+                      data-go-screen="conversation-mobile"
+                      disabled
+                    >
+                      &#8594;
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="mobile-section">
+              <div class="category-pills scrollable" id="mobileCategoryPills"></div>
+              <div class="mobile-gallery" id="mobileGallery"></div>
+              <button class="btn btn-secondary wide" id="mobileLoadMore">Load more</button>
+            </section>
+          </main>
+        </section>
+
+        <section class="screen" data-screen="conversation-mobile">
+          <header class="mobile-bar">
+            <button class="plain-button" data-go-screen="landing-mobile">&#8592;</button>
+            <div>AI Visualizer</div>
+            <button class="link-button" data-go-screen="landing-mobile">New</button>
+          </header>
+
+          <main class="mobile-conversation">
+            <div class="message message-user">
+              <div class="bubble" id="mobileConversationUserPrompt"></div>
+              <div class="timestamp">Just now</div>
+            </div>
+
+            <div class="message message-ai">
+              <div class="ai-header">
+                <div class="avatar">P</div>
+                <div>Variants ready to preview.</div>
+              </div>
+              <div class="mobile-variants" id="mobileVariants"></div>
+              <div class="suggestions scrollable" id="mobileSuggestions"></div>
+            </div>
+          </main>
+
+          <div class="persistent-bar mobile">
+            <input
+              id="mobilePromptBar"
+              type="text"
+              placeholder="Refine your visual..."
+            />
+            <button class="btn btn-icon small" id="mobileConversationSubmit">&#8594;</button>
+          </div>
+        </section>
+
+        <section class="screen" data-screen="editor-mobile">
+          <header class="mobile-bar">
+            <button class="plain-button" data-go-screen="conversation-mobile">&#8592;</button>
+            <div>Editing</div>
+            <div class="mobile-bar-actions">
+              <button class="icon-ghost small" data-open-overlay="mobile-history">&#128339;</button>
+              <button class="btn btn-primary compact" data-open-overlay="mobile-export">
+                Export
+              </button>
+            </div>
+          </header>
+
+          <main class="mobile-editor-main">
+            <div class="mobile-canvas">
+              <div class="canvas-card mobile">
+                <div class="canvas-title">CRISPR Gene Editing Mechanism</div>
+                <div class="flow-card selected-text">Guide RNA identifies target DNA sequence</div>
+                <div class="flow-card">Cas9 creates a double-strand break</div>
+                <div class="flow-card">Repair inserts or removes targeted sequence</div>
+              </div>
+            </div>
+
+            <footer class="mobile-toolbar">
+              <button class="tool icon-only" data-open-overlay="chat-panel">&#128172;</button>
+              <button class="tool icon-only" data-open-overlay="segment-overlay">&#9681;</button>
+              <button class="tool icon-only" data-open-overlay="mobile-select-note">&#9635;</button>
+              <button class="tool icon-only" data-open-overlay="remove-bg">&#10024;</button>
+              <button class="tool icon-only" data-open-overlay="overflow-menu">&#8942;</button>
+              <button class="tool icon-only">&#128465;</button>
+            </footer>
+          </main>
+        </section>
+      </div>
+    </div>
+
+    <div class="overlay-backdrop hidden" id="overlayBackdrop"></div>
+
+    <aside class="overlay panel hidden" id="preview-panel">
+      <button class="overlay-close" data-close-overlay>&times;</button>
+      <div class="preview-heading">
+        <span class="section-kicker">Selected design</span>
+        <h3 id="previewTitle">Variant 1</h3>
+        <p id="previewSummary">
+          A refined scientific design preview ready for editing, comparison, or export.
+        </p>
+      </div>
+      <div class="preview-image large" id="previewPanelImage"></div>
+      <div class="dot-row" id="previewDots"></div>
+      <button class="btn btn-primary wide" data-go-screen="editor-desktop" data-close-overlay>
+        Edit in Editor
+      </button>
+      <button class="btn btn-ghost wide" id="downloadFromPreview">Download</button>
+    </aside>
+
+    <aside class="overlay panel hidden" id="chat-panel">
+      <div class="overlay-head">
+        <h3>Edit via chat</h3>
+        <button class="overlay-close" data-close-overlay>&times;</button>
+      </div>
+      <div class="chat-thread">
+        <div class="thread-item">Increase annotation spacing around the nucleus callout.</div>
+        <div class="thread-item">Applied. Labels now have more breathing room.</div>
+      </div>
+      <div class="mini-chat">
+        <input type="text" placeholder="Describe your edit..." />
+        <button class="btn btn-icon small">&#8594;</button>
+      </div>
+    </aside>
+
+    <div class="overlay modal hidden" id="history-modal">
+      <div class="overlay-head">
+        <h3>Version history</h3>
+        <button class="overlay-close" data-close-overlay>&times;</button>
+      </div>
+      <div class="modal-body" id="historyModalList"></div>
+      <button class="btn btn-primary wide" data-close-overlay>Done</button>
+    </div>
+
+    <div class="overlay modal hidden" id="export-modal">
+      <div class="overlay-head">
+        <h3>Export your image</h3>
+        <button class="overlay-close" data-close-overlay>&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="selector-group">
+          <div class="selector-title">Format</div>
+          <div class="pill-row selectable" data-select-group="format">
+            <button class="pill active">PNG</button>
+            <button class="pill">JPG</button>
+            <button class="pill">SVG</button>
+            <button class="pill">PDF</button>
+          </div>
+        </div>
+        <div class="selector-group">
+          <div class="selector-title">Resolution</div>
+          <div class="pill-row selectable" data-select-group="resolution">
+            <button class="pill active">Standard (1x)</button>
+            <button class="pill">High (2x)</button>
+            <button class="pill">Print (3x)</button>
+          </div>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button class="btn btn-primary" id="confirmExport">Export</button>
+        <button class="btn btn-ghost" data-close-overlay>Cancel</button>
+      </div>
+    </div>
+
+    <div class="overlay modal hidden" id="share-modal">
+      <div class="overlay-head">
+        <h3>Share</h3>
+        <button class="overlay-close" data-close-overlay>&times;</button>
+      </div>
+      <div class="share-row">
+        <input value="https://paperpal.app/share/crispr-visual" readonly />
+        <button class="btn btn-secondary" id="copyShareBtn">Copy</button>
+      </div>
+      <button class="btn btn-ghost wide" data-close-overlay>Close</button>
+    </div>
+
+    <div class="overlay popover hidden" id="overflow-menu">
+      <button class="menu-item">Vectorize</button>
+      <button class="menu-item">Crop</button>
+      <button class="menu-item">Extract text</button>
+      <div class="menu-divider"></div>
+      <button class="menu-item danger">Trash</button>
+    </div>
+
+    <div class="overlay modal hidden" id="remove-bg">
+      <div class="overlay-head">
+        <h3>Remove background</h3>
+        <button class="overlay-close" data-close-overlay>&times;</button>
+      </div>
+      <p class="modal-copy">
+        Paperpal will isolate the selected subject and remove the surrounding background.
+      </p>
+      <div class="modal-actions">
+        <button class="btn btn-primary" data-close-overlay>Confirm</button>
+        <button class="btn btn-ghost" data-close-overlay>Cancel</button>
+      </div>
+    </div>
+
+    <div class="overlay modal hidden" id="segment-overlay">
+      <div class="overlay-head">
+        <h3>Segment object</h3>
+        <button class="overlay-close" data-close-overlay>&times;</button>
+      </div>
+      <p class="modal-copy">Segment mode highlights scientific elements and prepares them for isolation.</p>
+      <button class="btn btn-primary wide" data-close-overlay>Done</button>
+    </div>
+
+    <div class="overlay dropdown hidden" id="subject-dropdown">
+      <div class="dropdown-search">
+        <input id="subjectSearch" type="text" placeholder="Search subject area..." />
+      </div>
+      <div class="dropdown-list" id="subjectList"></div>
+    </div>
+
+    <div class="overlay drawer hidden" id="mobile-drawer">
+      <div class="overlay-head">
+        <h3>Menu</h3>
+        <button class="overlay-close" data-close-overlay>&times;</button>
+      </div>
+      <div class="drawer-links">
+        <button class="menu-item">Features</button>
+        <button class="menu-item">Pricing</button>
+        <button class="menu-item">Login</button>
+        <button class="btn btn-primary wide" data-close-overlay>Get Started</button>
+      </div>
+    </div>
+
+    <div class="overlay sheet hidden" id="mobile-preview">
+      <div class="overlay-head">
+        <button class="overlay-close left" data-close-overlay>&times;</button>
+        <h3>Preview</h3>
+        <div></div>
+      </div>
+      <div class="preview-image mobile-large" id="mobilePreviewImage"></div>
+      <div class="dot-row" id="mobilePreviewDots"></div>
+      <button class="btn btn-primary wide" data-go-screen="editor-mobile" data-close-overlay>
+        Edit in Editor
+      </button>
+      <button class="btn btn-ghost wide" id="mobileDownloadBtn">Download</button>
+    </div>
+
+    <div class="overlay sheet hidden" id="mobile-history">
+      <div class="sheet-handle"></div>
+      <div class="overlay-head">
+        <h3>Version history</h3>
+        <button class="overlay-close" data-close-overlay>&times;</button>
+      </div>
+      <div class="modal-body" id="mobileHistoryList"></div>
+      <button class="btn btn-ghost wide" data-close-overlay>Close</button>
+    </div>
+
+    <div class="overlay sheet hidden" id="mobile-export">
+      <div class="sheet-handle"></div>
+      <div class="overlay-head">
+        <h3>Export image</h3>
+        <button class="overlay-close" data-close-overlay>&times;</button>
+      </div>
+      <div class="pill-row selectable" data-select-group="mobile-format">
+        <button class="pill active">PNG</button>
+        <button class="pill">JPG</button>
+        <button class="pill">PDF</button>
+      </div>
+      <div class="modal-actions stacked">
+        <button class="btn btn-primary wide" id="mobileExportConfirm">Export</button>
+        <button class="btn btn-ghost wide" data-close-overlay>Cancel</button>
+      </div>
+    </div>
+
+    <div class="overlay toast hidden" id="download-toast">
+      <span class="success-icon">&#10003;</span>
+      <span>Your image has been downloaded</span>
+    </div>
+
+    <div class="overlay modal hidden" id="mobile-select-note">
+      <div class="overlay-head">
+        <h3>Select area</h3>
+        <button class="overlay-close" data-close-overlay>&times;</button>
+      </div>
+      <p class="modal-copy">Select area mode is represented in the desktop prototype and noted here for mobile continuity.</p>
+      <button class="btn btn-primary wide" data-close-overlay>Continue</button>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
