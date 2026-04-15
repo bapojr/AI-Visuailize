@@ -1119,9 +1119,11 @@ a {
 .conversation-layout {
   max-width: 1020px;
   margin: 0 auto;
-  padding: 56px 24px 150px;
+  padding: 56px 24px 196px;
   position: relative;
   background: #ffffff;
+  min-height: 100vh;
+  overflow-y: auto;
 }
 
 .screen[data-screen="conversation-desktop"] {
@@ -1342,7 +1344,12 @@ a {
   width: 720px;
   height: 120px;
   flex-shrink: 0;
-  margin: 0 auto 42px;
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  transform: translateX(-50%);
+  z-index: 20;
+  margin: 0;
   padding: 18px 20px 16px;
   border-radius: 30px;
   background: #ffffff;
