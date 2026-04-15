@@ -1411,6 +1411,12 @@ a {
   box-shadow: none;
 }
 
+.suggestions-horizontal .pill:hover {
+  border-color: #0062FF;
+  color: #0062FF;
+  background: #FFF;
+}
+
 .suggestions-fade {
   position: absolute;
   top: 0;
