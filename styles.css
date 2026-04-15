@@ -1138,7 +1138,7 @@ a {
 
 .message-user {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
 }
 
 .bubble {
@@ -1178,53 +1178,6 @@ a {
   gap: 18px;
   width: 720px;
   margin: 0 auto;
-}
-
-.ai-header {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  max-width: 664px;
-  margin: 0;
-}
-
-.paperpal-inline-mark {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.paperpal-inline-icon {
-  width: 26px;
-  height: 26px;
-  border-radius: 6px;
-  background: #0f63ff;
-  color: #ffffff;
-  display: grid;
-  place-items: center;
-  font-family: "IBM Plex Sans", sans-serif;
-  font-size: 14px;
-  font-weight: 700;
-}
-
-.paperpal-inline-mark strong {
-  color: #2257d9;
-  font-family: "IBM Plex Sans", sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-}
-
-.paperpal-inline-mark span {
-  display: inline-flex;
-  align-items: center;
-  min-height: 36px;
-  padding: 0 14px;
-  border-radius: 10px;
-  background: #2257d9;
-  color: #ffffff;
-  font-family: "IBM Plex Sans", sans-serif;
-  font-size: 14px;
-  font-weight: 600;
 }
 
 .variant-grid {
