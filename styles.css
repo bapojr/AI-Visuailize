@@ -1229,6 +1229,17 @@ a {
   border: 1px solid rgba(228, 234, 247, 0.95);
   background: #ffffff;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.variant-image-real.orientation-portrait {
+  height: 560px;
+}
+
+.variant-image-real.orientation-landscape {
+  height: 420px;
 }
 
 .variant-image-real::before {
@@ -2149,6 +2160,10 @@ a {
   max-width: 400px;
   border-radius: 24px;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
 }
 
 .preview-thread-image-card img {
@@ -2157,6 +2172,14 @@ a {
   display: block;
   border-radius: 24px;
   background: #ffffff;
+}
+
+.preview-thread-image-card.orientation-portrait {
+  max-width: 320px;
+}
+
+.preview-thread-image-card.orientation-landscape {
+  max-width: 400px;
 }
 
 .preview-thread-pills {
@@ -2270,6 +2293,9 @@ a {
   border-radius: 24px;
   background: #ffffff;
   box-shadow: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #previewPanelImage.preview-image.large::before {
@@ -2306,6 +2332,20 @@ a {
   object-position: center;
   border-radius: 24px;
   background: #ffffff;
+}
+
+#previewPanelImage.preview-image.large.orientation-portrait .preview-real-image {
+  width: auto;
+  max-width: min(100%, 560px);
+  height: 100%;
+  max-height: 100%;
+}
+
+#previewPanelImage.preview-image.large.orientation-landscape .preview-real-image {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  max-height: min(100%, 620px);
 }
 
 .preview-image.mobile-large {

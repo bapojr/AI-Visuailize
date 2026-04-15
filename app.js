@@ -9,6 +9,7 @@ const templateCatalog = [
     accent: "blueprint",
     subject: "Molecular Biology",
     image: "infographic-crispr.png",
+    orientation: "landscape",
     summary: "A finished infographic showing target recognition, cutting, repair pathways, and edited outcomes.",
   },
   {
@@ -19,6 +20,7 @@ const templateCatalog = [
     accent: "botanical",
     subject: "Plant Science",
     image: "infographic-plant-transport.png",
+    orientation: "portrait",
     summary: "A detailed plant-transport infographic with xylem, phloem, transpiration, and mineral movement.",
   },
   {
@@ -29,6 +31,7 @@ const templateCatalog = [
     accent: "sky",
     subject: "Environmental Science",
     image: "infographic-climate-pathways.png",
+    orientation: "portrait",
     summary: "A polished climate-impact infographic linking greenhouse gases, temperature rise, ecosystems, and response.",
   },
   {
@@ -39,6 +42,7 @@ const templateCatalog = [
     accent: "clinical",
     subject: "Medical Science",
     image: "poster-diabetes.png",
+    orientation: "portrait",
     summary: "A research-style medical poster covering progression, insulin resistance, pancreas function, and warning signs.",
   },
   {
@@ -49,6 +53,7 @@ const templateCatalog = [
     accent: "amber",
     subject: "Microbiology",
     image: "poster-gut-microbiome.png",
+    orientation: "portrait",
     summary: "A complete scientific poster with microbiome diversity, immune interaction, dysbiosis, and interventions.",
   },
   {
@@ -59,6 +64,7 @@ const templateCatalog = [
     accent: "violet",
     subject: "Neuroscience",
     image: "poster-alzheimers.png",
+    orientation: "portrait",
     summary: "A detailed poster covering plaques, tangles, neuron damage, disease stages, and therapeutic targets.",
   },
   {
@@ -69,6 +75,7 @@ const templateCatalog = [
     accent: "sunset",
     subject: "Immunology",
     image: "ga-inflammation.png",
+    orientation: "portrait",
     summary: "A finished pathway figure showing trigger detection, cytokine signaling, immune activation, and resolution.",
   },
   {
@@ -79,6 +86,7 @@ const templateCatalog = [
     accent: "ocean",
     subject: "Biotechnology",
     image: "ga-mrna-delivery.png",
+    orientation: "landscape",
     summary: "A polished delivery pathway figure showing nanoparticle uptake, endosomal escape, and release.",
   },
   {
@@ -89,6 +97,7 @@ const templateCatalog = [
     accent: "mint",
     subject: "Microbiology",
     image: "ga-bacterial-immune-response.png",
+    orientation: "landscape",
     summary: "A mechanistic graphical abstract tracing entry, immune recognition, inflammation, and intervention.",
   },
 ];
@@ -446,7 +455,7 @@ function createVariantCard(item) {
   if (state.isGeneratingImage) {
     button.classList.add("is-loading");
     button.innerHTML = `
-      <div class="variant-image variant-image-real variant-image-loading accent-${item.accent}">
+      <div class="variant-image variant-image-real variant-image-loading orientation-${item.orientation} accent-${item.accent}">
         <div class="generation-dot-grid" aria-hidden="true"></div>
         <div class="generation-image-shell">
           <img src="${item.image}" alt="${item.title}" class="variant-real-image generation-preview-image" />
@@ -457,7 +466,7 @@ function createVariantCard(item) {
     `;
   } else {
     button.innerHTML = `
-      <div class="variant-image variant-image-real accent-${item.accent}">
+      <div class="variant-image variant-image-real orientation-${item.orientation} accent-${item.accent}">
         <img src="${item.image}" alt="${item.title}" class="variant-real-image" />
       </div>
     `;
@@ -575,6 +584,7 @@ function updatePreviewVisuals() {
   }
 
   if (previewConversationImage) {
+    previewConversationImage.className = `preview-thread-image-card orientation-${activeVariant.orientation}`;
     previewConversationImage.innerHTML = `<img src="${activeVariant.image}" alt="${activeVariant.title}" class="preview-real-image" />`;
   }
 
@@ -589,12 +599,12 @@ function updatePreviewVisuals() {
   }
 
   if (preview) {
-    preview.className = `preview-image large accent-${activeVariant.accent}`;
+    preview.className = `preview-image large orientation-${activeVariant.orientation} accent-${activeVariant.accent}`;
     preview.innerHTML = `<img src="${activeVariant.image}" alt="${activeVariant.title}" class="variant-real-image preview-real-image" />`;
   }
 
   if (mobilePreview) {
-    mobilePreview.className = `preview-image mobile-large accent-${activeVariant.accent}`;
+    mobilePreview.className = `preview-image mobile-large orientation-${activeVariant.orientation} accent-${activeVariant.accent}`;
     mobilePreview.innerHTML = `<img src="${activeVariant.image}" alt="${activeVariant.title}" class="variant-real-image preview-real-image" />`;
   }
 
