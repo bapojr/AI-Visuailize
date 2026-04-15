@@ -164,6 +164,78 @@ const suggestionPills = [
   "Make the style more minimal",
 ];
 
+const segmentationRegions = {
+  "infographic-crispr": [
+    { id: "title", type: "text", label: "Title", x: 24, y: 4, w: 52, h: 8 },
+    { id: "guide-card", type: "graphic", label: "Guide RNA module", x: 6, y: 14, w: 38, h: 25 },
+    { id: "cutting-card", type: "graphic", label: "DNA cutting module", x: 57, y: 14, w: 35, h: 25 },
+    { id: "repair-panel", type: "graphic", label: "Repair pathways", x: 10, y: 52, w: 38, h: 30 },
+    { id: "outcome-panel", type: "graphic", label: "Edited outcomes", x: 58, y: 52, w: 29, h: 28 },
+  ],
+  "infographic-plants": [
+    { id: "title", type: "text", label: "Title", x: 22, y: 3, w: 48, h: 8 },
+    { id: "plant", type: "graphic", label: "Main plant diagram", x: 20, y: 12, w: 48, h: 66 },
+    { id: "xylem", type: "callout", label: "Xylem callout", x: 7, y: 31, w: 22, h: 14 },
+    { id: "phloem", type: "callout", label: "Phloem callout", x: 68, y: 31, w: 22, h: 14 },
+    { id: "roots", type: "callout", label: "Roots callout", x: 7, y: 59, w: 22, h: 14 },
+  ],
+  "infographic-climate": [
+    { id: "title", type: "text", label: "Title", x: 15, y: 3, w: 62, h: 8 },
+    { id: "emissions", type: "graphic", label: "Emissions module", x: 5, y: 14, w: 34, h: 22 },
+    { id: "ecosystem", type: "graphic", label: "Ecosystem module", x: 52, y: 30, w: 37, h: 17 },
+    { id: "sea-level", type: "graphic", label: "Sea-level module", x: 5, y: 50, w: 36, h: 18 },
+    { id: "response", type: "graphic", label: "Response module", x: 12, y: 79, w: 76, h: 14 },
+  ],
+  "poster-diabetes": [
+    { id: "title", type: "text", label: "Poster title", x: 3, y: 2, w: 78, h: 6 },
+    { id: "progression", type: "graphic", label: "Disease progression", x: 4, y: 9, w: 55, h: 13 },
+    { id: "risk", type: "text", label: "Risk factors", x: 66, y: 9, w: 28, h: 20 },
+    { id: "body-1", type: "graphic", label: "Insulin resistance", x: 4, y: 24, w: 57, h: 24 },
+    { id: "warning", type: "text", label: "Warning signs", x: 67, y: 26, w: 27, h: 19 },
+    { id: "body-2", type: "graphic", label: "Pancreas function", x: 4, y: 52, w: 57, h: 24 },
+    { id: "glucose", type: "graphic", label: "Blood glucose buildup", x: 4, y: 84, w: 91, h: 10 },
+  ],
+  "poster-microbiome": [
+    { id: "title", type: "text", label: "Poster title", x: 4, y: 2, w: 85, h: 7 },
+    { id: "intro", type: "text", label: "Introduction", x: 4, y: 12, w: 28, h: 34 },
+    { id: "diversity", type: "graphic", label: "Microbial diversity", x: 35, y: 12, w: 33, h: 32 },
+    { id: "immune", type: "graphic", label: "Immune interaction", x: 70, y: 12, w: 25, h: 24 },
+    { id: "inflammation", type: "graphic", label: "Inflammation panel", x: 35, y: 48, w: 33, h: 18 },
+    { id: "therapy", type: "text", label: "Therapeutic interventions", x: 72, y: 58, w: 22, h: 28 },
+  ],
+  "poster-alzheimers": [
+    { id: "title", type: "text", label: "Poster title", x: 4, y: 2, w: 82, h: 7 },
+    { id: "intro", type: "text", label: "Introduction", x: 3, y: 11, w: 27, h: 17 },
+    { id: "brain", type: "graphic", label: "Brain overview", x: 33, y: 11, w: 62, h: 18 },
+    { id: "plaques", type: "graphic", label: "Amyloid plaques", x: 3, y: 30, w: 44, h: 20 },
+    { id: "tau", type: "graphic", label: "Tau tangles", x: 49, y: 30, w: 46, h: 20 },
+    { id: "stages", type: "graphic", label: "Disease stages", x: 49, y: 52, w: 46, h: 14 },
+    { id: "targets", type: "text", label: "Therapeutic targets", x: 61, y: 75, w: 34, h: 20 },
+  ],
+  "ga-inflammation": [
+    { id: "title", type: "text", label: "Title", x: 14, y: 4, w: 62, h: 8 },
+    { id: "trigger", type: "graphic", label: "Trigger detection", x: 5, y: 17, w: 38, h: 14 },
+    { id: "cytokine", type: "graphic", label: "Cytokine signaling", x: 49, y: 17, w: 40, h: 16 },
+    { id: "inflammation", type: "graphic", label: "Tissue inflammation", x: 5, y: 50, w: 85, h: 18 },
+    { id: "resolution", type: "graphic", label: "Resolution", x: 5, y: 78, w: 85, h: 14 },
+  ],
+  "ga-rna": [
+    { id: "title", type: "text", label: "Title", x: 18, y: 3, w: 58, h: 8 },
+    { id: "delivery", type: "graphic", label: "Nanoparticle delivery", x: 3, y: 18, w: 27, h: 42 },
+    { id: "entry", type: "graphic", label: "Cell entry", x: 32, y: 18, w: 19, h: 42 },
+    { id: "escape", type: "graphic", label: "Endosomal escape", x: 52, y: 18, w: 22, h: 42 },
+    { id: "release", type: "graphic", label: "mRNA release", x: 76, y: 18, w: 18, h: 42 },
+  ],
+  "ga-bacterial-response": [
+    { id: "title", type: "text", label: "Title", x: 14, y: 3, w: 66, h: 8 },
+    { id: "entry", type: "graphic", label: "Bacterial entry", x: 4, y: 16, w: 22, h: 22 },
+    { id: "recognition", type: "graphic", label: "Immune recognition", x: 35, y: 16, w: 22, h: 22 },
+    { id: "inflammation", type: "graphic", label: "Tissue inflammation", x: 73, y: 25, w: 22, h: 19 },
+    { id: "neutrophil", type: "graphic", label: "Neutrophil activation", x: 4, y: 58, w: 25, h: 24 },
+    { id: "intervention", type: "graphic", label: "Therapeutic intervention", x: 66, y: 58, w: 24, h: 24 },
+  ],
+};
+
 const subjectGroups = {
   "Suggested": ["Default"],
   "Life Sciences": [
@@ -202,6 +274,7 @@ const state = {
   zoom: 100,
   currentEditorTemplate: templateCatalog[0],
   editorBackground: "#FFFFFF",
+  selectedEditorSegmentId: null,
   hasHistory: false,
   mixedOrder: shuffle([...templateCatalog]),
   generatedResultTemplate: templateCatalog[0],
@@ -702,6 +775,8 @@ function renderEditorCanvas() {
   const canvas = document.getElementById("editorCanvas");
   const image = document.getElementById("editorCanvasImage");
   const mediaShell = document.getElementById("editorCanvasMediaShell");
+  const segmentation = document.getElementById("editorImageSegmentation");
+  const actionStack = document.getElementById("editorImageActionStack");
   if (!canvas || !image) return;
 
   canvas.classList.add("image-mode");
@@ -711,6 +786,22 @@ function renderEditorCanvas() {
   if (mediaShell) {
     mediaShell.style.background = state.editorBackground;
   }
+  if (segmentation) {
+    segmentation.innerHTML = "";
+    (segmentationRegions[activeTemplate.id] || []).forEach((region) => {
+      const button = document.createElement("button");
+      button.className = `editor-segment ${state.selectedEditorSegmentId === region.id ? "active" : ""}`;
+      button.style.left = `${region.x}%`;
+      button.style.top = `${region.y}%`;
+      button.style.width = `${region.w}%`;
+      button.style.height = `${region.h}%`;
+      button.dataset.segmentId = region.id;
+      button.dataset.segmentType = region.type;
+      button.innerHTML = `<span class="editor-segment-label">${region.label}</span>`;
+      segmentation.appendChild(button);
+    });
+  }
+  actionStack?.classList.add("hidden");
   updateZoom();
 }
 
@@ -755,9 +846,14 @@ function bindCanvasSelection() {
   const imageToolbar = document.getElementById("editorImageActionStack");
   const moreMenu = document.getElementById("editorImageMoreMenu");
   const moreTrigger = document.getElementById("editorImageMoreTrigger");
+  const segmentation = document.getElementById("editorImageSegmentation");
 
   editorImage?.addEventListener("click", (event) => {
     event.stopPropagation();
+    state.selectedEditorSegmentId = null;
+    segmentation?.querySelectorAll(".editor-segment").forEach((segment) => {
+      segment.classList.remove("active");
+    });
     imageToolbar?.classList.remove("hidden");
   });
 
@@ -775,6 +871,17 @@ function bindCanvasSelection() {
       imageToolbar.classList.add("hidden");
       moreMenu?.classList.add("hidden");
     }
+  });
+
+  segmentation?.addEventListener("click", (event) => {
+    const segment = event.target.closest(".editor-segment");
+    if (!segment) return;
+    event.stopPropagation();
+    state.selectedEditorSegmentId = segment.dataset.segmentId;
+    segmentation.querySelectorAll(".editor-segment").forEach((item) => {
+      item.classList.toggle("active", item === segment);
+    });
+    imageToolbar?.classList.remove("hidden");
   });
 }
 
