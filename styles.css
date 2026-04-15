@@ -1138,7 +1138,7 @@ a {
 
 .message-user {
   display: flex;
-  justify-content: flex-start;
+  justify-content: flex-end;
 }
 
 .bubble {
@@ -1161,9 +1161,21 @@ a {
 }
 
 .message-user .bubble {
-  margin-right: auto;
+  margin-left: auto;
   text-align: left;
   justify-content: flex-start;
+}
+
+.bubble-output {
+  max-width: 664px;
+  width: 100%;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  padding-left: 0;
+  padding-right: 0;
+  justify-content: flex-start;
+  text-align: left;
 }
 
 .message-ai {
