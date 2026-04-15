@@ -492,9 +492,10 @@ function createHistoryNode(item, compact = false, isActive = false) {
   button.className = compact ? "history-thumb" : `history-entry ${isActive ? "active" : ""}`;
 
   if (compact) {
+    const latestTemplate = state.generatedResultTemplate || templateCatalog[0];
     button.innerHTML = `
       <div class="thumb-preview accent-${item.accent}">
-        <span class="thumb-label">${item.title}</span>
+        <img src="${latestTemplate.image}" alt="${latestTemplate.title}" class="history-thumb-image" />
       </div>
       <div class="thumb-time">${item.time}</div>
     `;
