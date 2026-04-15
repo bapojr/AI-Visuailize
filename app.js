@@ -278,6 +278,7 @@ function showOverlay(id) {
   if (!overlay) return;
   overlay.classList.remove("hidden");
   overlayBackdrop.classList.remove("hidden");
+  overlayBackdrop.classList.toggle("preview-active", id === "preview-panel");
   state.activeOverlay = id;
 }
 
@@ -286,6 +287,7 @@ function hideOverlay() {
     document.getElementById(id)?.classList.add("hidden");
   });
   overlayBackdrop.classList.add("hidden");
+  overlayBackdrop.classList.remove("preview-active");
   state.activeOverlay = null;
 }
 

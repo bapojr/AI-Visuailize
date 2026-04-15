@@ -1790,6 +1790,10 @@ a {
   z-index: 50;
 }
 
+.overlay-backdrop.preview-active {
+  background: #ffffff;
+}
+
 .overlay {
   position: fixed;
   z-index: 60;
@@ -1810,19 +1814,23 @@ a {
 }
 
 #preview-panel.preview-split-panel {
-  top: 50%;
-  left: 50%;
-  right: auto;
-  width: min(calc(100vw - 40px), 1383px);
-  height: 817px;
-  transform: translate(-50%, -50%);
+  inset: 24px;
+  top: 24px;
+  left: 24px;
+  right: 24px;
+  bottom: 24px;
+  width: auto;
+  height: auto;
+  transform: none;
   padding: 0;
-  background: transparent;
+  background: #ffffff;
   box-shadow: none;
   display: grid;
-  grid-template-columns: 448px 903px;
-  gap: 32px;
+  grid-template-columns: minmax(360px, 33.16fr) minmax(680px, 66.84fr);
+  gap: clamp(20px, 1.8vw, 32px);
   align-content: stretch;
+  align-items: stretch;
+  border-radius: 0;
 }
 
 .overlay.modal {
@@ -1932,7 +1940,7 @@ a {
 
 .preview-conversation-pane,
 .preview-image-pane {
-  height: 817px;
+  height: 100%;
   border-radius: 28px;
   background: #ffffff;
   border: 1px solid rgba(228, 234, 247, 0.92);
@@ -2064,6 +2072,7 @@ a {
   grid-template-rows: auto 1fr;
   padding: 20px 20px 24px;
   gap: 16px;
+  min-width: 0;
 }
 
 .preview-image-topbar {
@@ -2077,6 +2086,7 @@ a {
   min-height: 0;
   display: grid;
   place-items: center;
+  overflow: hidden;
 }
 
 #previewPanelImage.preview-image.large {
@@ -2092,6 +2102,28 @@ a {
 #previewPanelImage.preview-image.large::before {
   content: none;
   background: none;
+}
+
+.preview-conversation-thread,
+.preview-image-stage,
+#previewPanelImage.preview-image.large {
+  min-width: 0;
+}
+
+@media (max-width: 1320px) {
+  #preview-panel.preview-split-panel {
+    inset: 16px;
+    grid-template-columns: minmax(320px, 31fr) minmax(560px, 69fr);
+    gap: 16px;
+  }
+
+  .preview-conversation-shell {
+    padding: 20px;
+  }
+
+  .preview-image-pane {
+    padding: 16px 16px 20px;
+  }
 }
 
 #previewPanelImage .preview-real-image {
