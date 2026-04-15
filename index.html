@@ -238,11 +238,17 @@
         <section class="screen" data-screen="editor-desktop">
           <header class="editor-topbar">
             <div class="editor-left">
-              <button class="wordmark plain" data-go-screen="landing-desktop">Paperpal</button>
-              <span class="muted">AI Visualizer</span>
-              <span class="divider"></span>
-              <button class="icon-ghost small" id="undoBtn">&#8630;</button>
-              <button class="icon-ghost small" id="redoBtn">&#8631;</button>
+              <button class="editor-back-button" data-go-screen="landing-desktop" aria-label="Back">
+                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="16" viewBox="0 0 10 16" fill="none" aria-hidden="true">
+                  <path d="M0.234473 7.46895C-0.0592773 7.7627 -0.0592773 8.2377 0.234473 8.52832L6.48447 14.7783C6.77822 15.0721 7.25322 15.0721 7.54385 14.7783C7.83447 14.4846 7.8376 14.0096 7.54385 13.7189L1.8251 8.0002L7.54385 2.28145C7.8376 1.9877 7.8376 1.5127 7.54385 1.22207C7.2501 0.931447 6.7751 0.928322 6.48447 1.22207L0.234473 7.46895Z" fill="black"/>
+                </svg>
+              </button>
+              <button class="editor-document-title" data-open-overlay="rename-visualization-modal" id="editorDocumentTitleButton">
+                <span id="editorDocumentTitle">Untitled</span>
+              </button>
+              <button class="editor-title-edit" data-open-overlay="rename-visualization-modal" aria-label="Rename visualization">
+                &#9998;
+              </button>
             </div>
             <div class="zoom-pill">
               <button class="plain-button" id="zoomOutBtn">-</button>
@@ -341,11 +347,17 @@
         <section class="screen" data-screen="editor-select-area">
           <header class="editor-topbar">
             <div class="editor-left">
-              <button class="wordmark plain" data-go-screen="landing-desktop">Paperpal</button>
-              <span class="muted">AI Visualizer</span>
-              <span class="divider"></span>
-              <button class="icon-ghost small">&#8630;</button>
-              <button class="icon-ghost small">&#8631;</button>
+              <button class="editor-back-button" data-go-screen="landing-desktop" aria-label="Back">
+                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="16" viewBox="0 0 10 16" fill="none" aria-hidden="true">
+                  <path d="M0.234473 7.46895C-0.0592773 7.7627 -0.0592773 8.2377 0.234473 8.52832L6.48447 14.7783C6.77822 15.0721 7.25322 15.0721 7.54385 14.7783C7.83447 14.4846 7.8376 14.0096 7.54385 13.7189L1.8251 8.0002L7.54385 2.28145C7.8376 1.9877 7.8376 1.5127 7.54385 1.22207C7.2501 0.931447 6.7751 0.928322 6.48447 1.22207L0.234473 7.46895Z" fill="black"/>
+                </svg>
+              </button>
+              <button class="editor-document-title" data-open-overlay="rename-visualization-modal">
+                <span class="editor-document-title-text">Untitled</span>
+              </button>
+              <button class="editor-title-edit" data-open-overlay="rename-visualization-modal" aria-label="Rename visualization">
+                &#9998;
+              </button>
             </div>
             <div class="zoom-pill">
               <button class="plain-button">-</button>
@@ -412,11 +424,17 @@
         <section class="screen" data-screen="editor-collapsed-history">
           <header class="editor-topbar">
             <div class="editor-left">
-              <button class="wordmark plain" data-go-screen="landing-desktop">Paperpal</button>
-              <span class="muted">AI Visualizer</span>
-              <span class="divider"></span>
-              <button class="icon-ghost small">&#8630;</button>
-              <button class="icon-ghost small">&#8631;</button>
+              <button class="editor-back-button" data-go-screen="landing-desktop" aria-label="Back">
+                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="16" viewBox="0 0 10 16" fill="none" aria-hidden="true">
+                  <path d="M0.234473 7.46895C-0.0592773 7.7627 -0.0592773 8.2377 0.234473 8.52832L6.48447 14.7783C6.77822 15.0721 7.25322 15.0721 7.54385 14.7783C7.83447 14.4846 7.8376 14.0096 7.54385 13.7189L1.8251 8.0002L7.54385 2.28145C7.8376 1.9877 7.8376 1.5127 7.54385 1.22207C7.2501 0.931447 6.7751 0.928322 6.48447 1.22207L0.234473 7.46895Z" fill="black"/>
+                </svg>
+              </button>
+              <button class="editor-document-title" data-open-overlay="rename-visualization-modal">
+                <span class="editor-document-title-text">Untitled</span>
+              </button>
+              <button class="editor-title-edit" data-open-overlay="rename-visualization-modal" aria-label="Rename visualization">
+                &#9998;
+              </button>
             </div>
             <div class="zoom-pill">
               <button class="plain-button">-</button>
@@ -771,6 +789,22 @@
       </div>
       <p class="modal-copy">Segment mode highlights scientific elements and prepares them for isolation.</p>
       <button class="btn btn-primary wide" data-close-overlay>Done</button>
+    </div>
+
+    <div class="overlay modal hidden" id="rename-visualization-modal">
+      <div class="overlay-head">
+        <h3>Rename visualization</h3>
+        <button class="overlay-close" data-close-overlay>&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="rename-field-wrap">
+          <input id="renameVisualizationInput" type="text" value="Untitled" />
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button class="btn btn-primary" id="saveVisualizationName">Save</button>
+        <button class="btn btn-ghost" data-close-overlay>Cancel</button>
+      </div>
     </div>
 
     <div class="overlay dropdown hidden" id="subject-dropdown">

@@ -274,6 +274,7 @@ const state = {
   zoom: 100,
   currentEditorTemplate: templateCatalog[0],
   editorBackground: "#FFFFFF",
+  editorTitle: "Untitled",
   selectedEditorSegmentId: null,
   selectedEditorSegmentType: null,
   isEditorFrameSelected: false,
@@ -297,6 +298,7 @@ const overlayIds = [
   "overflow-menu",
   "remove-bg",
   "segment-overlay",
+  "rename-visualization-modal",
   "subject-dropdown",
   "mobile-drawer",
   "mobile-preview",
@@ -391,6 +393,16 @@ function showOverlay(id) {
   hideOverlay();
   const overlay = document.getElementById(id);
   if (!overlay) return;
+  if (id === "rename-visualization-modal") {
+    const input = document.getElementById("renameVisualizationInput");
+    if (input) {
+      input.value = state.editorTitle;
+      setTimeout(() => {
+        input.focus();
+        input.select();
+      }, 0);
+    }
+  }
   overlay.classList.remove("hidden");
   overlayBackdrop.classList.remove("hidden");
   overlayBackdrop.classList.toggle("preview-active", id === "preview-panel");
@@ -702,6 +714,12 @@ function updatePreviewVisuals() {
       });
       container.appendChild(dot);
     });
+  });
+}
+
+function renderEditorTitle() {
+  document.querySelectorAll("#editorDocumentTitle, .editor-document-title-text").forEach((node) => {
+    node.textContent = state.editorTitle;
   });
 }
 
@@ -1069,6 +1087,21 @@ function initActions() {
   document.getElementById("desktopSuggestions")?.addEventListener("scroll", updateSuggestionsRailState);
   window.addEventListener("resize", updateSuggestionsRailState);
 
+  document.getElementById("saveVisualizationName")?.addEventListener("click", () => {
+    const input = document.getElementById("renameVisualizationInput");
+    const nextTitle = input?.value.trim() || "Untitled";
+    state.editorTitle = nextTitle;
+    renderEditorTitle();
+    hideOverlay();
+  });
+
+  document.getElementById("renameVisualizationInput")?.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      document.getElementById("saveVisualizationName")?.click();
+    }
+  });
+
   document.getElementById("zoomInBtn")?.addEventListener("click", () => {
     state.zoom += 10;
     updateZoom();
@@ -1119,6 +1152,7 @@ function init() {
   renderSuggestions();
   renderSubjectList();
   updatePreviewVisuals();
+  renderEditorTitle();
   updateSuggestionsRailState();
   toggleSubmitStates();
   updateEditorToolbar("text");
