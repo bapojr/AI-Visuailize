@@ -200,6 +200,7 @@ const state = {
   activeOverlay: null,
   editorState: "text",
   zoom: 100,
+  currentEditorTemplate: templateCatalog[0],
   hasHistory: false,
   mixedOrder: shuffle([...templateCatalog]),
   generatedResultTemplate: templateCatalog[0],
@@ -303,6 +304,10 @@ function setScreen(name) {
     syncMobileConversationPrompt();
     state.hasHistory = true;
     renderLandingHistoryVisibility();
+  }
+
+  if (name === "editor-desktop") {
+    renderEditorCanvas();
   }
 }
 
@@ -689,6 +694,21 @@ function updateEditorToolbar(kind) {
   toolbar.innerHTML = '<div class="toolbar-group"><span class="toolbar-chip">Select any element to edit its properties</span></div>';
 }
 
+function renderEditorCanvas() {
+  const activeTemplate = state.generatedResultTemplate || state.currentEditorTemplate || templateCatalog[0];
+  state.currentEditorTemplate = activeTemplate;
+
+  const canvas = document.getElementById("editorCanvas");
+  const image = document.getElementById("editorCanvasImage");
+  if (!canvas || !image) return;
+
+  canvas.classList.add("image-mode");
+  image.src = activeTemplate.image;
+  image.alt = activeTemplate.title;
+  image.className = `editor-canvas-image orientation-${activeTemplate.orientation}`;
+  updateZoom();
+}
+
 function updateSuggestionsRailState() {
   const rail = document.getElementById("desktopSuggestions");
   const leftArrow = document.querySelector(".suggestions-arrow-left");
@@ -898,6 +918,7 @@ function updateZoom() {
   const zoomLabel = `${state.zoom}%`;
   document.getElementById("zoomValue").textContent = zoomLabel;
   document.getElementById("canvasZoomPill").textContent = zoomLabel;
+  document.getElementById("editorCanvasImage")?.style.setProperty("--editor-zoom-scale", `${state.zoom / 100}`);
 }
 
 function init() {
@@ -918,6 +939,7 @@ function init() {
   initActions();
   syncConversationPrompt();
   syncMobileConversationPrompt();
+  renderEditorCanvas();
   updateZoom();
 }
 

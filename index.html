@@ -266,44 +266,8 @@
               <div class="canvas-stage">
                 <div class="canvas-grid"></div>
                 <div class="canvas-card" id="editorCanvas">
-                  <div class="canvas-topband"></div>
-                  <div class="canvas-title" data-select="text">CRISPR Gene Editing Mechanism</div>
-                  <div class="canvas-subtitle" data-select="text">
-                    A simplified workflow showing target recognition, cleavage, and repair outcomes.
-                  </div>
-                  <div class="canvas-flow">
-                    <div class="flow-card selected-text tone-blue" data-select="text">
-                      Guide RNA identifies the matching DNA sequence
-                    </div>
-                    <div class="flow-arrow">&#8594;</div>
-                    <div class="flow-card tone-mint" data-select="shape">
-                      Cas9 binds and introduces a precise double-strand break
-                    </div>
-                    <div class="flow-arrow">&#8595;</div>
-                    <div class="flow-card tone-coral" data-select="shape">
-                      Cellular repair inserts, deletes, or replaces target sequence
-                    </div>
-                  </div>
-                  <div class="insight-row">
-                    <div class="insight-card" data-select="shape">
-                      <span class="insight-index">01</span>
-                      <strong>Recognition</strong>
-                      <p>Target site is identified through guide RNA complementarity.</p>
-                    </div>
-                    <div class="insight-card" data-select="shape">
-                      <span class="insight-index">02</span>
-                      <strong>Cleavage</strong>
-                      <p>Cas9 induces a break in the DNA backbone at the programmed site.</p>
-                    </div>
-                    <div class="insight-card" data-select="shape">
-                      <span class="insight-index">03</span>
-                      <strong>Repair</strong>
-                      <p>Repair pathways produce knockout or insertion outcomes.</p>
-                    </div>
-                  </div>
-                  <div class="annotation" data-select="text">
-                    Visual notes: keep labels high contrast, use directional arrows, and keep the
-                    overall layout publication-friendly.
+                  <div class="editor-canvas-media-shell" id="editorCanvasMediaShell">
+                    <img id="editorCanvasImage" alt="Selected generated visual" class="editor-canvas-image" />
                   </div>
                 </div>
                 <div class="canvas-controls">
