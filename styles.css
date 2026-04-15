@@ -689,7 +689,7 @@ a {
 }
 
 .start-scratch-card {
-  width: min(986px, 100%);
+  width: min(860px, 100%);
   min-height: 82px;
   margin: 0 auto 16px;
   padding: 18px 22px;
@@ -815,6 +815,13 @@ a {
   max-width: 986px;
 }
 
+.landing-chat,
+.start-scratch-card,
+.gallery-section {
+  width: min(860px, calc(100% - 48px));
+  max-width: 860px;
+}
+
 .landing-chat .chatbox-left {
   gap: 10px;
 }
@@ -936,6 +943,11 @@ a {
   margin: 0 auto;
   padding: 32px 24px 0;
   background: #f6f7fb;
+}
+
+.gallery-section {
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .category-bar {
@@ -1143,6 +1155,11 @@ a {
   grid-template-columns: repeat(4, minmax(250px, 1fr));
   gap: 22px;
   align-items: start;
+}
+
+.gallery-section .gallery-grid {
+  grid-template-columns: repeat(3, 250px);
+  justify-content: space-between;
 }
 
 .template-card,
