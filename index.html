@@ -327,6 +327,106 @@
                 <button class="editor-sidepanel-tab active">Edit</button>
               </div>
               <div class="editor-sidepanel-section">
+                <label class="editor-field-label" for="editorImageDescription">Image Description</label>
+                <textarea
+                  class="editor-description-field"
+                  id="editorImageDescription"
+                  placeholder="For example: A diagram showing the cell division process, including key steps of DNA replication and chromosome separation..."
+                ></textarea>
+              </div>
+              <div class="editor-sidepanel-section">
+                <label class="editor-field-label">Image Text Language</label>
+                <div class="editor-dropdown" data-editor-dropdown>
+                  <button class="editor-select" type="button" data-editor-dropdown-trigger>
+                    <span>🇺🇸 English (Default)</span>
+                    <span>⌄</span>
+                  </button>
+                  <div class="editor-select-menu">
+                    <button type="button" data-editor-dropdown-option>🇺🇸 English (Default)</button>
+                    <button type="button" data-editor-dropdown-option>Hindi</button>
+                    <button type="button" data-editor-dropdown-option>Spanish</button>
+                    <button type="button" data-editor-dropdown-option>French</button>
+                  </div>
+                </div>
+              </div>
+              <div class="editor-sidepanel-section">
+                <label class="editor-field-label">Image Resolution</label>
+                <div class="editor-segmented">
+                  <button class="active" type="button">2K</button>
+                  <button type="button">4K</button>
+                </div>
+              </div>
+              <div class="editor-sidepanel-section">
+                <label class="editor-field-label">Images per Run</label>
+                <div class="editor-segmented four">
+                  <button class="active" type="button">1</button>
+                  <button type="button">2</button>
+                  <button type="button">3</button>
+                  <button type="button">4</button>
+                </div>
+              </div>
+              <div class="editor-sidepanel-section advanced-options">
+                <button class="advanced-options-head" type="button" aria-expanded="true">
+                  <span>Advanced Options</span>
+                  <span>⌃</span>
+                </button>
+                <div class="advanced-options-body">
+                  <label class="editor-field-label muted">Template</label>
+                  <div class="editor-dropdown" data-editor-dropdown>
+                    <button class="editor-select" type="button" data-editor-dropdown-trigger>
+                      <span>No Template</span>
+                      <span>⌄</span>
+                    </button>
+                    <div class="editor-select-menu">
+                      <button type="button" data-editor-dropdown-option>TOC Graphical Abstract</button>
+                      <button type="button" data-editor-dropdown-option>Journal Cover</button>
+                      <button type="button" data-editor-dropdown-option>Experimental Workflow</button>
+                      <button type="button" data-editor-dropdown-option>Mechanism Illustration</button>
+                      <button type="button" data-editor-dropdown-option>Signaling Pathway</button>
+                      <button type="button" data-editor-dropdown-option>System Architecture</button>
+                      <button type="button" data-editor-dropdown-option>Comparison Analysis</button>
+                      <button type="button" data-editor-dropdown-option>No Template</button>
+                    </div>
+                  </div>
+                  <label class="editor-field-label muted">Style</label>
+                  <div class="editor-dropdown" data-editor-dropdown>
+                    <button class="editor-select" type="button" data-editor-dropdown-trigger>
+                      <span>No Style</span>
+                      <span>⌄</span>
+                    </button>
+                    <div class="editor-select-menu">
+                      <button type="button" data-editor-dropdown-option>Flat Illustration</button>
+                      <button type="button" data-editor-dropdown-option>Isometric 3D</button>
+                      <button type="button" data-editor-dropdown-option>Photorealistic</button>
+                      <button type="button" data-editor-dropdown-option>Schematic Diagram</button>
+                      <button type="button" data-editor-dropdown-option>Artistic Abstract</button>
+                      <button type="button" data-editor-dropdown-option>Scientific Illustration</button>
+                      <button type="button" data-editor-dropdown-option>No Style</button>
+                    </div>
+                  </div>
+                  <label class="editor-field-label muted">Aspect Ratio</label>
+                  <div class="editor-dropdown" data-editor-dropdown>
+                    <button class="editor-select" type="button" data-editor-dropdown-trigger>
+                      <span>4:3</span>
+                      <span>⌄</span>
+                    </button>
+                    <div class="editor-select-menu">
+                      <button type="button" data-editor-dropdown-option>Auto</button>
+                      <button type="button" data-editor-dropdown-option>1:1</button>
+                      <button type="button" data-editor-dropdown-option>16:9</button>
+                      <button type="button" data-editor-dropdown-option>9:16</button>
+                      <button type="button" data-editor-dropdown-option>4:3</button>
+                      <button type="button" data-editor-dropdown-option>3:4</button>
+                      <button type="button" data-editor-dropdown-option>3:2</button>
+                      <button type="button" data-editor-dropdown-option>2:3</button>
+                      <button type="button" data-editor-dropdown-option>5:4</button>
+                      <button type="button" data-editor-dropdown-option>4:5</button>
+                      <button type="button" data-editor-dropdown-option>21:9</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="editor-sidepanel-section">
                 <h3>Background</h3>
                 <div class="editor-bg-swatches" id="editorBackgroundSwatches">
                   <button class="editor-bg-swatch active" data-color="#FFFFFF" aria-label="White background"></button>

@@ -2121,7 +2121,7 @@ a {
 
 .editor-main {
   display: grid;
-  grid-template-columns: 260px minmax(0, 1fr) 320px;
+  grid-template-columns: 340px minmax(0, 1fr) 320px;
   height: calc(100vh - 68px);
   min-height: calc(100vh - 68px);
   background: #ffffff;
@@ -2131,10 +2131,10 @@ a {
 .editor-sidepanel {
   background: #ffffff;
   border-right: 1px solid rgba(22, 37, 72, 0.08);
-  padding: 20px 18px;
+  padding: 20px 18px 28px;
   display: grid;
   align-content: start;
-  gap: 24px;
+  gap: 20px;
   overflow: auto;
 }
 
@@ -2163,7 +2163,155 @@ a {
 
 .editor-sidepanel-section {
   display: grid;
-  gap: 14px;
+  gap: 12px;
+}
+
+.editor-field-label,
+.advanced-options-head {
+  margin: 0;
+  color: #13161b;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.editor-field-label.muted {
+  color: #5d6a81;
+}
+
+.editor-description-field {
+  min-height: 132px;
+  resize: vertical;
+  border-radius: 12px;
+  border: 1px solid #cad5e7;
+  background: #ffffff;
+  color: #13161b;
+  padding: 14px;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.6;
+  outline: none;
+}
+
+.editor-description-field::placeholder {
+  color: #9da3ae;
+}
+
+.editor-description-field:focus,
+.editor-select:focus {
+  border-color: #0062ff;
+  box-shadow: 0 0 0 3px rgba(0, 98, 255, 0.1);
+}
+
+.editor-dropdown {
+  position: relative;
+}
+
+.editor-select {
+  width: 100%;
+  min-height: 48px;
+  border-radius: 12px;
+  border: 1px solid #cad5e7;
+  background: #ffffff;
+  color: #13161b;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 0 14px;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: left;
+}
+
+.editor-select-menu {
+  display: none;
+  position: absolute;
+  z-index: 30;
+  left: 0;
+  right: 0;
+  top: calc(100% + 8px);
+  max-height: 260px;
+  overflow: auto;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 4px 4px 16px 0 rgba(0, 0, 0, 0.08), 16px 8px 32px 16px rgba(0, 0, 0, 0.02);
+  padding: 8px;
+}
+
+.editor-dropdown.open .editor-select-menu {
+  display: grid;
+  gap: 2px;
+}
+
+.editor-select-menu button {
+  min-height: 40px;
+  border: 0;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #13161b;
+  padding: 0 10px;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: left;
+}
+
+.editor-select-menu button:hover,
+.editor-select-menu button.selected {
+  color: #0062ff;
+  background: #f8f9fd;
+}
+
+.editor-segmented {
+  min-height: 48px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border-radius: 12px;
+  border: 1px solid #cad5e7;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.editor-segmented.four {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.editor-segmented button {
+  border: 0;
+  background: transparent;
+  color: #5d6a81;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.editor-segmented button.active {
+  background: #edf3ff;
+  color: #0062ff;
+}
+
+.advanced-options {
+  border-top: 1px solid #e4eaf7;
+  padding-top: 4px;
+}
+
+.advanced-options-head {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.advanced-options-body {
+  display: grid;
+  gap: 12px;
+  padding-top: 2px;
 }
 
 .editor-sidepanel-section h3 {

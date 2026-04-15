@@ -1029,6 +1029,33 @@ function initActions() {
     if (event.target.hasAttribute("data-close-overlay")) {
       hideOverlay();
     }
+
+    const editorDropdownTrigger = event.target.closest("[data-editor-dropdown-trigger]");
+    if (editorDropdownTrigger) {
+      const dropdown = editorDropdownTrigger.closest("[data-editor-dropdown]");
+      document.querySelectorAll("[data-editor-dropdown].open").forEach((node) => {
+        if (node !== dropdown) node.classList.remove("open");
+      });
+      dropdown?.classList.toggle("open");
+    }
+
+    const editorDropdownOption = event.target.closest("[data-editor-dropdown-option]");
+    if (editorDropdownOption) {
+      const dropdown = editorDropdownOption.closest("[data-editor-dropdown]");
+      const triggerText = dropdown?.querySelector("[data-editor-dropdown-trigger] span:first-child");
+      if (triggerText) triggerText.textContent = editorDropdownOption.textContent;
+      dropdown?.querySelectorAll("[data-editor-dropdown-option]").forEach((node) => {
+        node.classList.toggle("selected", node === editorDropdownOption);
+      });
+      dropdown?.classList.remove("open");
+    }
+
+    const segmentedOption = event.target.closest(".editor-segmented button");
+    if (segmentedOption) {
+      segmentedOption.parentElement.querySelectorAll("button").forEach((node) => {
+        node.classList.toggle("active", node === segmentedOption);
+      });
+    }
   });
 
   overlayBackdrop.addEventListener("click", hideOverlay);
