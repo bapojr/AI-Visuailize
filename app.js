@@ -1005,6 +1005,9 @@ function initActions() {
 
   document.getElementById("landingPromptDesktop")?.addEventListener("input", toggleSubmitStates);
   document.getElementById("landingPromptMobile")?.addEventListener("input", toggleSubmitStates);
+  document.querySelector(".sidebar-auth-cta")?.addEventListener("click", () => {
+    document.querySelector(".landing-sidebar")?.classList.add("is-signed-in");
+  });
   document.getElementById("subjectSearch")?.addEventListener("input", (event) => {
     renderSubjectList(event.target.value);
   });

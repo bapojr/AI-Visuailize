@@ -32,11 +32,35 @@
                 <span>+</span>
                 New visualization
               </button>
+              <div class="sidebar-divider signed-in-only"></div>
+              <section class="sidebar-recent signed-in-only" aria-label="Recent visualizations">
+                <div class="sidebar-recent-head">
+                  <h2>Recent</h2>
+                  <button class="sidebar-see-all" type="button">
+                    See all
+                    <svg xmlns="http://www.w3.org/2000/svg" width="10" height="16" viewBox="0 0 10 16" fill="none" aria-hidden="true">
+                      <g clip-path="url(#sidebarSeeAllChevron)">
+                        <path d="M9.79678 7.46895C10.0905 7.7627 10.0905 8.2377 9.79678 8.52832L3.54678 14.7783C3.25303 15.0721 2.77803 15.0721 2.4874 14.7783C2.19678 14.4846 2.19365 14.0096 2.4874 13.7189L8.20615 8.0002L2.4874 2.28145C2.19365 1.9877 2.19365 1.5127 2.4874 1.22207C2.78115 0.931447 3.25615 0.928322 3.54678 1.22207L9.79678 7.47207V7.46895Z" fill="currentColor"/>
+                      </g>
+                      <defs>
+                        <clipPath id="sidebarSeeAllChevron">
+                          <rect width="10" height="16" fill="white"/>
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  </button>
+                </div>
+                <div class="sidebar-empty-state">No items yet</div>
+              </section>
               <div class="sidebar-spacer"></div>
               <button class="sidebar-settings">
                 <span>⚙</span>
                 Settings
               </button>
+              <div class="sidebar-profile signed-in-only">
+                <span class="sidebar-avatar">S</span>
+                <span>sushrut.bapro</span>
+              </div>
               <button class="sidebar-auth-cta">Log in or sign up</button>
             </aside>
             <div class="landing-main-content">
