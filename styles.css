@@ -1162,8 +1162,8 @@ a {
 
 .message-user .bubble {
   margin-left: auto;
-  text-align: left;
-  justify-content: flex-start;
+  text-align: right;
+  justify-content: flex-end;
 }
 
 .bubble-output {
