@@ -201,6 +201,7 @@ const state = {
   editorState: "text",
   zoom: 100,
   currentEditorTemplate: templateCatalog[0],
+  editorBackground: "#FFFFFF",
   hasHistory: false,
   mixedOrder: shuffle([...templateCatalog]),
   generatedResultTemplate: templateCatalog[0],
@@ -700,12 +701,16 @@ function renderEditorCanvas() {
 
   const canvas = document.getElementById("editorCanvas");
   const image = document.getElementById("editorCanvasImage");
+  const mediaShell = document.getElementById("editorCanvasMediaShell");
   if (!canvas || !image) return;
 
   canvas.classList.add("image-mode");
   image.src = activeTemplate.image;
   image.alt = activeTemplate.title;
   image.className = `editor-canvas-image orientation-${activeTemplate.orientation}`;
+  if (mediaShell) {
+    mediaShell.style.background = state.editorBackground;
+  }
   updateZoom();
 }
 
@@ -921,6 +926,18 @@ function updateZoom() {
   document.getElementById("editorCanvasImage")?.style.setProperty("--editor-zoom-scale", `${state.zoom / 100}`);
 }
 
+function bindEditorBackgroundSwatches() {
+  document.querySelectorAll(".editor-bg-swatch").forEach((button) => {
+    button.addEventListener("click", () => {
+      state.editorBackground = button.dataset.color || "#FFFFFF";
+      document.querySelectorAll(".editor-bg-swatch").forEach((swatch) => {
+        swatch.classList.toggle("active", swatch === button);
+      });
+      renderEditorCanvas();
+    });
+  });
+}
+
 function init() {
   renderCategoryPills("desktopCategoryPills", "desktop");
   renderCategoryPills("mobileCategoryPills", "mobile");
@@ -936,6 +953,7 @@ function init() {
   updateEditorToolbar("text");
   bindCanvasSelection();
   bindSelectGroups();
+  bindEditorBackgroundSwatches();
   initActions();
   syncConversationPrompt();
   syncMobileConversationPrompt();

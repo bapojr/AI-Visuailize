@@ -262,9 +262,24 @@
           </div>
 
           <main class="editor-main">
+            <aside class="editor-sidepanel">
+              <div class="editor-sidepanel-tabs">
+                <button class="editor-sidepanel-tab active">Edit</button>
+              </div>
+              <div class="editor-sidepanel-section">
+                <h3>Background</h3>
+                <div class="editor-bg-swatches" id="editorBackgroundSwatches">
+                  <button class="editor-bg-swatch active" data-color="#FFFFFF" aria-label="White background"></button>
+                  <button class="editor-bg-swatch" data-color="#F8F9FD" style="background:#F8F9FD" aria-label="Soft gray background"></button>
+                  <button class="editor-bg-swatch" data-color="#EDF3FF" style="background:#EDF3FF" aria-label="Pale blue background"></button>
+                  <button class="editor-bg-swatch" data-color="#F4F7EC" style="background:#F4F7EC" aria-label="Pale green background"></button>
+                  <button class="editor-bg-swatch" data-color="#FFF5E8" style="background:#FFF5E8" aria-label="Warm cream background"></button>
+                  <button class="editor-bg-swatch" data-color="#FCEEF3" style="background:#FCEEF3" aria-label="Soft pink background"></button>
+                </div>
+              </div>
+            </aside>
             <section class="canvas-shell">
               <div class="canvas-stage">
-                <div class="canvas-grid"></div>
                 <div class="canvas-card" id="editorCanvas">
                   <div class="editor-canvas-media-shell" id="editorCanvasMediaShell">
                     <img id="editorCanvasImage" alt="Selected generated visual" class="editor-canvas-image" />
