@@ -194,6 +194,9 @@ const state = {
   hasHistory: false,
   mixedOrder: shuffle([...templateCatalog]),
   generatedResultTemplate: templateCatalog[0],
+  pendingGeneratedResultTemplate: null,
+  isGeneratingImage: false,
+  generationTimer: null,
 };
 
 const desktopScreens = document.querySelectorAll(".desktop-shell .screen");
@@ -236,6 +239,28 @@ function variantById(id) {
 
 function randomTemplateItem() {
   return templateCatalog[Math.floor(Math.random() * templateCatalog.length)];
+}
+
+function startImageGeneration() {
+  const nextTemplate = randomTemplateItem();
+  state.pendingGeneratedResultTemplate = nextTemplate;
+  state.isGeneratingImage = true;
+
+  if (state.generationTimer) {
+    clearTimeout(state.generationTimer);
+  }
+
+  renderVariants();
+  updatePreviewVisuals();
+
+  state.generationTimer = setTimeout(() => {
+    state.generatedResultTemplate = state.pendingGeneratedResultTemplate || nextTemplate;
+    state.pendingGeneratedResultTemplate = null;
+    state.isGeneratingImage = false;
+    renderVariants();
+    updatePreviewVisuals();
+    state.generationTimer = null;
+  }, 5000);
 }
 
 function getGalleryItems(category) {
@@ -417,13 +442,29 @@ function renderLandingHistoryVisibility() {
 function createVariantCard(item) {
   const button = document.createElement("button");
   button.className = `variant-card variant-card-image accent-${item.accent} active`;
-  button.innerHTML = `
-    <div class="variant-image variant-image-real accent-${item.accent}">
-      <img src="${item.image}" alt="${item.title}" class="variant-real-image" />
-    </div>
-  `;
+
+  if (state.isGeneratingImage) {
+    button.classList.add("is-loading");
+    button.innerHTML = `
+      <div class="variant-image variant-image-real variant-image-loading accent-${item.accent}">
+        <div class="generation-dot-grid" aria-hidden="true"></div>
+        <div class="generation-image-shell">
+          <img src="${item.image}" alt="${item.title}" class="variant-real-image generation-preview-image" />
+          <div class="generation-reveal-mask" aria-hidden="true"></div>
+          <div class="generation-blur-band" aria-hidden="true"></div>
+        </div>
+      </div>
+    `;
+  } else {
+    button.innerHTML = `
+      <div class="variant-image variant-image-real accent-${item.accent}">
+        <img src="${item.image}" alt="${item.title}" class="variant-real-image" />
+      </div>
+    `;
+  }
 
   button.addEventListener("click", () => {
+    if (state.isGeneratingImage) return;
     state.generatedResultTemplate = item;
     updatePreviewVisuals();
     renderVariants();
@@ -436,7 +477,9 @@ function createVariantCard(item) {
 function renderVariants() {
   const desktop = document.getElementById("desktopVariants");
   const mobile = document.getElementById("mobileVariants");
-  const item = state.generatedResultTemplate;
+  const item = state.isGeneratingImage
+    ? state.pendingGeneratedResultTemplate || state.generatedResultTemplate
+    : state.generatedResultTemplate;
 
   if (desktop) {
     desktop.innerHTML = "";
@@ -501,7 +544,11 @@ function renderSubjectList(filter = "") {
 }
 
 function updatePreviewVisuals() {
-  const activeVariant = state.generatedResultTemplate || templateCatalog[0];
+  const activeVariant = (
+    state.isGeneratingImage
+      ? state.pendingGeneratedResultTemplate || state.generatedResultTemplate
+      : state.generatedResultTemplate
+  ) || templateCatalog[0];
   const preview = document.getElementById("previewPanelImage");
   const mobilePreview = document.getElementById("mobilePreviewImage");
   const conversationAiOutput = document.getElementById("conversationAiOutput");
@@ -511,7 +558,9 @@ function updatePreviewVisuals() {
   const previewConversationPills = document.getElementById("previewConversationPills");
 
   if (conversationAiOutput) {
-    conversationAiOutput.textContent = `Here is a generated ${activeVariant.category.toLowerCase()} direction for ${activeVariant.subject.toLowerCase()}. You can continue refining the visual, ask for a different layout, or generate another direction.`;
+    conversationAiOutput.textContent = state.isGeneratingImage
+      ? `Generating a ${activeVariant.category.toLowerCase()} direction for ${activeVariant.subject.toLowerCase()}. This will be ready in a moment.`
+      : `Here is a generated ${activeVariant.category.toLowerCase()} direction for ${activeVariant.subject.toLowerCase()}. You can continue refining the visual, ask for a different layout, or generate another direction.`;
   }
 
   if (previewConversationUserPrompt) {
@@ -520,7 +569,9 @@ function updatePreviewVisuals() {
   }
 
   if (previewConversationAiOutput) {
-    previewConversationAiOutput.textContent = `Here is a generated ${activeVariant.category.toLowerCase()} direction for ${activeVariant.subject.toLowerCase()}. You can continue refining the visual, ask for a different layout, or generate another direction.`;
+    previewConversationAiOutput.textContent = state.isGeneratingImage
+      ? `Generating a ${activeVariant.category.toLowerCase()} direction for ${activeVariant.subject.toLowerCase()}. This will be ready in a moment.`
+      : `Here is a generated ${activeVariant.category.toLowerCase()} direction for ${activeVariant.subject.toLowerCase()}. You can continue refining the visual, ask for a different layout, or generate another direction.`;
   }
 
   if (previewConversationImage) {
@@ -679,11 +730,11 @@ function bindSelectGroups() {
 
 function handlePromptSubmit(destination) {
   state.hasHistory = true;
-  state.generatedResultTemplate = randomTemplateItem();
   renderLandingHistoryVisibility();
   setScreen(destination);
   syncConversationPrompt();
   syncMobileConversationPrompt();
+  startImageGeneration();
 }
 
 function initActions() {
@@ -768,6 +819,7 @@ function initActions() {
     document.getElementById("conversationUserPrompt").textContent = input.value.trim();
     state.prompt = input.value.trim();
     input.value = "";
+    startImageGeneration();
   });
 
   document.getElementById("mobileConversationSubmit")?.addEventListener("click", () => {
