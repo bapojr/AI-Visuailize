@@ -2028,6 +2028,24 @@ a {
 
 .preview-thread-pills .pill {
   flex: 0 0 auto;
+  border-radius: 12px;
+  border: 1px solid var(--Gray-5, #E4EAF7);
+  background: #FFF;
+  height: 40px;
+  color: var(--Gray-11, #5D6A81);
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding: 0 16px;
+  box-shadow: none;
+}
+
+.preview-thread-pills .pill:hover {
+  border-color: #0062FF;
+  color: #0062FF;
+  background: #FFF;
 }
 
 .preview-mini-chatbox {
