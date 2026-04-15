@@ -604,6 +604,24 @@ function updateEditorToolbar(kind) {
   toolbar.innerHTML = '<div class="toolbar-group"><span class="toolbar-chip">Select any element to edit its properties</span></div>';
 }
 
+function updateSuggestionsRailState() {
+  const rail = document.getElementById("desktopSuggestions");
+  const leftArrow = document.querySelector(".suggestions-arrow-left");
+  const rightArrow = document.querySelector(".suggestions-arrow-right");
+  const leftFade = document.querySelector(".suggestions-fade-left");
+  const rightFade = document.querySelector(".suggestions-fade-right");
+  if (!rail || !leftArrow || !rightArrow || !leftFade || !rightFade) return;
+
+  const maxScroll = rail.scrollWidth - rail.clientWidth;
+  const atStart = rail.scrollLeft <= 2;
+  const atEnd = rail.scrollLeft >= maxScroll - 2 || maxScroll <= 0;
+
+  leftArrow.classList.toggle("is-hidden", atStart);
+  leftFade.classList.toggle("is-hidden", atStart);
+  rightArrow.classList.toggle("is-hidden", atEnd);
+  rightFade.classList.toggle("is-hidden", atEnd);
+}
+
 function bindCanvasSelection() {
   document.querySelectorAll("[data-select]").forEach((node) => {
     node.addEventListener("click", (event) => {
@@ -750,6 +768,7 @@ function initActions() {
       left: firstPill.offsetWidth + gap,
       behavior: "smooth",
     });
+    setTimeout(updateSuggestionsRailState, 260);
   });
 
   document.querySelector(".suggestions-arrow-left")?.addEventListener("click", () => {
@@ -762,7 +781,11 @@ function initActions() {
       left: -(firstPill.offsetWidth + gap),
       behavior: "smooth",
     });
+    setTimeout(updateSuggestionsRailState, 260);
   });
+
+  document.getElementById("desktopSuggestions")?.addEventListener("scroll", updateSuggestionsRailState);
+  window.addEventListener("resize", updateSuggestionsRailState);
 
   document.getElementById("zoomInBtn")?.addEventListener("click", () => {
     state.zoom += 10;
@@ -801,6 +824,7 @@ function init() {
   renderSuggestions();
   renderSubjectList();
   updatePreviewVisuals();
+  updateSuggestionsRailState();
   toggleSubmitStates();
   updateEditorToolbar("text");
   bindCanvasSelection();
