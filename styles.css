@@ -742,7 +742,7 @@ a {
 .start-scratch-card {
   width: min(860px, 100%);
   min-height: 82px;
-  margin: 0 auto 16px;
+  margin: 16px auto 0;
   padding: 18px 22px;
   border: 1px solid #e4eaf7;
   border-radius: 18px;
@@ -864,6 +864,7 @@ a {
 
 .landing-chat {
   max-width: 986px;
+  margin-top: -8px;
 }
 
 .landing-chat,
