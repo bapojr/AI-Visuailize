@@ -799,7 +799,7 @@ a {
 .chatbox-right {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 24px;
 }
 
 .chatbox-left {
@@ -855,6 +855,17 @@ a {
   color: var(--ink-900);
   box-shadow: none;
   font-family: "IBM Plex Sans", sans-serif;
+}
+
+.ratio-pill {
+  gap: 8px;
+}
+
+.ratio-pill-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
 }
 
 .landing-submit {
