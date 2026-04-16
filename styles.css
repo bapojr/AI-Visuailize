@@ -140,29 +140,14 @@ a {
 .paperpal-sidebar-logo {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  width: 143px;
+  height: 45px;
 }
 
-.paperpal-logo-mark {
-  width: 28px;
-  height: 28px;
-  border-radius: 6px;
-  background: #0062ff;
-  color: #ffffff;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-family: "IBM Plex Sans", sans-serif;
-  font-size: 15px;
-  font-weight: 700;
-}
-
-.paperpal-logo-word {
-  color: #0062ff;
-  font-family: "IBM Plex Sans", sans-serif;
-  font-size: 22px;
-  font-weight: 700;
-  letter-spacing: -0.03em;
+.paperpal-sidebar-logo svg {
+  display: block;
+  width: 143px;
+  height: 45px;
 }
 
 .landing-sidebar-toggle,
