@@ -177,14 +177,20 @@ a {
 }
 
 .landing-sidebar-toggle {
-  width: 34px;
-  height: 34px;
-  border-radius: 10px;
-  background: #f8f9fd;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  background: transparent;
   color: #5d6a81;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+}
+
+.landing-sidebar-toggle svg {
+  width: 28px;
+  height: 28px;
+  display: block;
 }
 
 .sidebar-new-visualization,
