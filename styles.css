@@ -3606,10 +3606,11 @@ a {
 }
 
 .ratio-list {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 8px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px 16px;
   max-height: none;
   padding-right: 0;
+  align-items: start;
 }
 
 .dropdown-item {
@@ -3627,14 +3628,67 @@ a {
 .ratio-list .dropdown-item {
   justify-content: center;
   text-align: center;
-  min-height: 44px;
   border: 1px solid #cad5e7;
   border-radius: 12px;
   padding: 0 8px;
 }
 
-.ratio-list .dropdown-item.span-2 {
-  grid-column: span 2;
+.ratio-option {
+  place-self: start;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  color: #5d6a81;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.ratio-auto,
+.ratio-square {
+  width: 72px;
+  height: 72px;
+}
+
+.ratio-landscape-sm {
+  width: 96px;
+  height: 72px;
+}
+
+.ratio-portrait-sm {
+  width: 72px;
+  height: 96px;
+}
+
+.ratio-landscape-md {
+  width: 96px;
+  height: 64px;
+}
+
+.ratio-portrait-md {
+  width: 64px;
+  height: 96px;
+}
+
+.ratio-landscape-lg {
+  width: 112px;
+  height: 64px;
+}
+
+.ratio-portrait-lg {
+  width: 64px;
+  height: 112px;
+}
+
+.ratio-cinema {
+  width: 96px;
+  height: 52px;
+}
+
+.ratio-list .dropdown-item.active {
+  border-color: #0062ff;
+  color: #0062ff;
+  background: #edf3ff;
 }
 
 .dropdown-item.active {
