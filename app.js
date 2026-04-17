@@ -262,7 +262,7 @@ const state = {
     subject: "Default",
     style: "No Style",
     model: "GPT Image 1",
-    ratio: "Ratio",
+    ratio: "1:1",
   },
   mobile: {
     activeScreen: "landing-mobile",
@@ -271,7 +271,7 @@ const state = {
     subject: "Default",
     style: "No Style",
     model: "GPT Image 1",
-    ratio: "Ratio",
+    ratio: "1:1",
   },
   prompt: "",
   selectedVariant: 1,
@@ -790,8 +790,11 @@ function syncMobileConversationPrompt() {
 function toggleSubmitStates() {
   const desktopValue = document.getElementById("landingPromptDesktop")?.value.trim() || "";
   const mobileValue = document.getElementById("landingPromptMobile")?.value.trim() || "";
+  const conversationValue = document.getElementById("conversationPromptBar")?.value.trim() || "";
   const desktopButton = document.getElementById("landingSubmitDesktop");
   const mobileButton = document.getElementById("landingSubmitMobile");
+  const landingHelper = document.getElementById("landingPromptHelper");
+  const conversationHelper = document.getElementById("conversationPromptHelper");
   document
     .getElementById("desktopLandingChatbox")
     ?.classList.toggle("has-value", Boolean(desktopValue));
@@ -800,6 +803,14 @@ function toggleSubmitStates() {
     ?.classList.toggle("has-value", Boolean(mobileValue));
   if (desktopButton) desktopButton.disabled = !desktopValue;
   if (mobileButton) mobileButton.disabled = !mobileValue;
+  if (landingHelper) {
+    landingHelper.disabled = !desktopValue;
+    landingHelper.classList.toggle("is-enabled", Boolean(desktopValue));
+  }
+  if (conversationHelper) {
+    conversationHelper.disabled = !conversationValue;
+    conversationHelper.classList.toggle("is-enabled", Boolean(conversationValue));
+  }
 }
 
 function updateEditorToolbar(kind) {
@@ -1110,6 +1121,7 @@ function initActions() {
 
   document.getElementById("landingPromptDesktop")?.addEventListener("input", toggleSubmitStates);
   document.getElementById("landingPromptMobile")?.addEventListener("input", toggleSubmitStates);
+  document.getElementById("conversationPromptBar")?.addEventListener("input", toggleSubmitStates);
   document.querySelector(".sidebar-auth-cta")?.addEventListener("click", () => {
     document.querySelector(".landing-sidebar")?.classList.add("is-signed-in");
   });
