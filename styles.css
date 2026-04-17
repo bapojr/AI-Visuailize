@@ -221,7 +221,7 @@ a {
   width: 16px;
   height: 16px;
   background: transparent;
-  color: #13161b;
+  color: var(--Gray-11, #5D6A81);
   display: inline-flex;
   align-items: center;
   justify-content: center;
