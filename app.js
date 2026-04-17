@@ -1055,7 +1055,7 @@ function initActions() {
       document.querySelectorAll("[data-ratio-option]").forEach((node) => {
         node.classList.toggle("active", node === ratioOption);
       });
-      document.querySelectorAll(".ratio-pill-text").forEach((node) => {
+      document.querySelectorAll(".ratio-trigger-text").forEach((node) => {
         node.textContent = ratioOption.dataset.ratioOption;
       });
       state.desktop.ratio = ratioOption.dataset.ratioOption;
@@ -1068,9 +1068,6 @@ function initActions() {
       document.querySelectorAll("[data-style-option]").forEach((node) => {
         node.classList.toggle("active", node === styleOption);
       });
-      document.querySelectorAll(".style-pill-text").forEach((node) => {
-        node.textContent = styleOption.dataset.styleOption;
-      });
       state.desktop.style = styleOption.dataset.styleOption;
       state.mobile.style = styleOption.dataset.styleOption;
       hideOverlay();
@@ -1080,9 +1077,6 @@ function initActions() {
     if (modelOption) {
       document.querySelectorAll("[data-model-option]").forEach((node) => {
         node.classList.toggle("active", node === modelOption);
-      });
-      document.querySelectorAll(".model-pill-text").forEach((node) => {
-        node.textContent = modelOption.dataset.modelOption;
       });
       state.desktop.model = modelOption.dataset.modelOption;
       state.mobile.model = modelOption.dataset.modelOption;
