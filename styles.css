@@ -229,6 +229,20 @@ a {
   font-weight: 700;
 }
 
+.sidebar-new-visualization-compact {
+  display: none;
+  width: 11px !important;
+  height: 16px !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+}
+
+.sidebar-new-visualization-compact svg {
+  display: block;
+  width: 11px;
+  height: 16px;
+}
+
 .sidebar-divider {
   height: 1px;
   flex: 0 0 auto;
@@ -372,6 +386,16 @@ a {
 .first-user-shell.sidebar-collapsed .sidebar-new-visualization span,
 .first-user-shell.sidebar-collapsed .sidebar-settings span {
   margin: 0;
+}
+
+.first-user-shell.sidebar-collapsed .sidebar-new-visualization-icon {
+  display: none;
+}
+
+.first-user-shell.sidebar-collapsed .sidebar-new-visualization-compact {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .first-user-shell.sidebar-collapsed .signed-in-only,
