@@ -229,8 +229,8 @@
                           <span class="ratio-pill-text">Ratio</span>
                           <span>&#9662;</span>
                         </button>
-                        <button class="subject-pill landing-chat-action" type="button" data-open-overlay="format-dropdown">
-                          <span class="format-pill-text">Infographics</span>
+                        <button class="subject-pill landing-chat-action" type="button" data-open-overlay="style-dropdown">
+                          <span class="style-pill-text">No Style</span>
                           <span>&#9662;</span>
                         </button>
                         <button class="subject-pill landing-chat-action model-pill" type="button" data-open-overlay="model-dropdown">
@@ -394,8 +394,8 @@
                   <span class="model-pill-text">GPT Image 1</span>
                   <span>&#9662;</span>
                 </button>
-                <button class="subject-pill landing-chat-action" type="button" data-open-overlay="format-dropdown">
-                  <span class="format-pill-text">Infographics</span>
+                <button class="subject-pill landing-chat-action" type="button" data-open-overlay="style-dropdown">
+                  <span class="style-pill-text">No Style</span>
                   <span>&#9662;</span>
                 </button>
               </div>
@@ -1136,11 +1136,15 @@
       </div>
     </div>
 
-    <div class="overlay dropdown hidden" id="format-dropdown">
+    <div class="overlay dropdown hidden" id="style-dropdown">
       <div class="dropdown-list simple-dropdown-list">
-        <button class="dropdown-item active" data-format-option="Infographics">Infographics</button>
-        <button class="dropdown-item" data-format-option="Poster">Poster</button>
-        <button class="dropdown-item" data-format-option="Graphical Abstract">Graphical Abstract</button>
+        <button class="dropdown-item" data-style-option="Flat Illustration">Flat Illustration</button>
+        <button class="dropdown-item" data-style-option="Isometric 3D">Isometric 3D</button>
+        <button class="dropdown-item" data-style-option="Photorealistic">Photorealistic</button>
+        <button class="dropdown-item" data-style-option="Schematic Diagram">Schematic Diagram</button>
+        <button class="dropdown-item" data-style-option="Artistic Abstract">Artistic Abstract</button>
+        <button class="dropdown-item" data-style-option="Scientific Illustration">Scientific Illustration</button>
+        <button class="dropdown-item active" data-style-option="No Style">No Style</button>
       </div>
     </div>
 

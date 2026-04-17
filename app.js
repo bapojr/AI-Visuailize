@@ -260,7 +260,7 @@ const state = {
     activeCategory: null,
     galleryCount: 9,
     subject: "Default",
-    format: "Infographics",
+    style: "No Style",
     model: "GPT Image 1",
     ratio: "Ratio",
   },
@@ -269,7 +269,7 @@ const state = {
     activeCategory: null,
     galleryCount: 4,
     subject: "Default",
-    format: "Infographics",
+    style: "No Style",
     model: "GPT Image 1",
     ratio: "Ratio",
   },
@@ -308,7 +308,7 @@ const overlayIds = [
   "rename-visualization-modal",
   "subject-dropdown",
   "ratio-dropdown",
-  "format-dropdown",
+  "style-dropdown",
   "model-dropdown",
   "mobile-drawer",
   "mobile-preview",
@@ -1052,16 +1052,16 @@ function initActions() {
       hideOverlay();
     }
 
-    const formatOption = event.target.closest("[data-format-option]");
-    if (formatOption) {
-      document.querySelectorAll("[data-format-option]").forEach((node) => {
-        node.classList.toggle("active", node === formatOption);
+    const styleOption = event.target.closest("[data-style-option]");
+    if (styleOption) {
+      document.querySelectorAll("[data-style-option]").forEach((node) => {
+        node.classList.toggle("active", node === styleOption);
       });
-      document.querySelectorAll(".format-pill-text").forEach((node) => {
-        node.textContent = formatOption.dataset.formatOption;
+      document.querySelectorAll(".style-pill-text").forEach((node) => {
+        node.textContent = styleOption.dataset.styleOption;
       });
-      state.desktop.format = formatOption.dataset.formatOption;
-      state.mobile.format = formatOption.dataset.formatOption;
+      state.desktop.style = styleOption.dataset.styleOption;
+      state.mobile.style = styleOption.dataset.styleOption;
       hideOverlay();
     }
 
