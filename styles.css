@@ -2013,7 +2013,7 @@ a {
   margin: 0;
   padding: 18px 20px 16px;
   border-radius: 30px;
-  background: #ffffff;
+  background: var(--Gray-2, #F8F9FD);
   border: 1px solid rgba(102, 120, 255, 0.14);
   box-shadow: 0 18px 44px rgba(49, 85, 153, 0.12);
   display: flex;
