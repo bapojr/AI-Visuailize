@@ -915,6 +915,18 @@
     <div class="overlay-backdrop hidden" id="overlayBackdrop"></div>
 
     <aside class="overlay panel preview-split-panel hidden" id="preview-panel">
+      <div class="preview-image-pane">
+        <div class="preview-image-topbar">
+          <button class="btn btn-primary" data-go-screen="editor-desktop" data-close-overlay>
+            Open in editor
+          </button>
+          <button class="overlay-close" data-close-overlay>&times;</button>
+        </div>
+        <div class="preview-image-stage">
+          <div class="preview-image large" id="previewPanelImage"></div>
+        </div>
+      </div>
+
       <div class="preview-conversation-pane">
         <div class="preview-conversation-shell">
           <div class="preview-conversation-thread">
@@ -976,18 +988,6 @@
               </button>
             </div>
           </div>
-        </div>
-      </div>
-
-      <div class="preview-image-pane">
-        <div class="preview-image-topbar">
-          <button class="btn btn-primary" data-go-screen="editor-desktop" data-close-overlay>
-            Open in editor
-          </button>
-          <button class="overlay-close" data-close-overlay>&times;</button>
-        </div>
-        <div class="preview-image-stage">
-          <div class="preview-image large" id="previewPanelImage"></div>
         </div>
       </div>
     </aside>

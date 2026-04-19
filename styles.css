@@ -3138,7 +3138,7 @@ a {
   height: auto;
   transform: none;
   padding: 0;
-  background: #ffffff;
+  background: var(--Gray-2, #F8F9FD);
   box-shadow: none;
   display: grid;
   grid-template-columns: minmax(360px, 33.16fr) minmax(680px, 66.84fr);
@@ -3343,11 +3343,11 @@ a {
 }
 
 .preview-conversation-pane {
-  animation: previewLeftPaneIn 460ms cubic-bezier(0.16, 0.84, 0.24, 1) both;
+  animation: previewRightPaneIn 340ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
 }
 
 .preview-image-pane {
-  animation: previewRightPaneIn 340ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  animation: previewLeftPaneIn 460ms cubic-bezier(0.16, 0.84, 0.24, 1) both;
 }
 
 .preview-conversation-shell {
@@ -3377,7 +3377,8 @@ a {
 }
 
 .preview-thread-bubble {
-  width: min(100%, 324px);
+  width: fit-content;
+  max-width: 40px;
   padding: 16px;
   border-radius: 12px;
   background: var(--Gray-2, #F8F9FD);
@@ -3387,6 +3388,9 @@ a {
   font-size: 14px;
   font-weight: 500;
   line-height: 1.45;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .preview-thread-ai {
