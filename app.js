@@ -68,6 +68,17 @@ const templateCatalog = [
     summary: "A detailed poster covering plaques, tangles, neuron damage, disease stages, and therapeutic targets.",
   },
   {
+    id: "poster-glp",
+    title: "GLP-1 Biology and Therapeutic Pathways",
+    category: "Posters",
+    type: "AI-generated",
+    accent: "clinical",
+    subject: "Medical Science",
+    image: "GLP.png",
+    orientation: "portrait",
+    summary: "A finished GLP-1 poster treatment for metabolic science and therapeutic communication.",
+  },
+  {
     id: "ga-inflammation",
     title: "Inflammation Response Pathway",
     category: "Graphical Abstract",
@@ -212,6 +223,15 @@ const segmentationRegions = {
     { id: "stages", type: "graphic", label: "Disease stages", x: 49, y: 52, w: 46, h: 14 },
     { id: "targets", type: "text", label: "Therapeutic targets", x: 61, y: 75, w: 34, h: 20 },
   ],
+  "poster-glp": [
+    { id: "title", type: "text", label: "Poster title", x: 4, y: 2, w: 82, h: 7 },
+    { id: "overview", type: "graphic", label: "Main overview", x: 5, y: 11, w: 90, h: 18 },
+    { id: "pathway-1", type: "graphic", label: "Pathway panel 1", x: 5, y: 31, w: 42, h: 20 },
+    { id: "pathway-2", type: "graphic", label: "Pathway panel 2", x: 51, y: 31, w: 44, h: 20 },
+    { id: "pathway-3", type: "graphic", label: "Pathway panel 3", x: 5, y: 54, w: 42, h: 20 },
+    { id: "callout", type: "text", label: "Callout panel", x: 51, y: 54, w: 44, h: 20 },
+    { id: "footer", type: "text", label: "Footer notes", x: 5, y: 78, w: 90, h: 14 },
+  ],
   "ga-inflammation": [
     { id: "title", type: "text", label: "Title", x: 14, y: 4, w: 62, h: 8 },
     { id: "trigger", type: "graphic", label: "Trigger detection", x: 5, y: 17, w: 38, h: 14 },
@@ -340,8 +360,24 @@ function randomTemplateItem() {
   return templateCatalog[Math.floor(Math.random() * templateCatalog.length)];
 }
 
+function normalizedPromptValue(prompt = "") {
+  return prompt
+    .toLowerCase()
+    .replace(/[’']/g, "'")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function templateForPrompt(prompt = "") {
+  const normalized = normalizedPromptValue(prompt);
+  if (normalized === "create me a poster on glp 1's" || normalized === "create me a poster on glp-1's") {
+    return templateCatalog.find((item) => item.id === "poster-glp") || null;
+  }
+  return null;
+}
+
 function startImageGeneration() {
-  const nextTemplate = randomTemplateItem();
+  const nextTemplate = templateForPrompt(state.prompt) || randomTemplateItem();
   state.pendingGeneratedResultTemplate = nextTemplate;
   state.isGeneratingImage = true;
 
